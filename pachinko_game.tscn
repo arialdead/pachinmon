@@ -685,6 +685,7 @@ libraries = {
 }
 
 [node name="HUD2" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 254.0
@@ -728,7 +729,6 @@ texture_pressed = ExtResource("14_52y2f")
 texture_hover = ExtResource("15_sqsr2")
 
 [node name="Pokedex" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
@@ -823,6 +823,7 @@ texture_pressed = ExtResource("28_4im2k")
 texture_hover = ExtResource("31_2wf0t")
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
