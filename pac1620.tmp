@@ -1,0 +1,1424 @@
+[gd_scene load_steps=54 format=3 uid="uid://da6d6unxurmtx"]
+
+[ext_resource type="Script" path="res://PachinkoGame.gd" id="1_hvfcm"]
+[ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://ball.tscn" id="2_aubgf"]
+[ext_resource type="Texture2D" uid="uid://w5r5d12gr57p" path="res://Sprite/Layout2.png" id="3_w6d6w"]
+[ext_resource type="Texture2D" uid="uid://cjg1tddguqmhe" path="res://Sprite/Controller.png" id="4_arcsb"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="5_ue8rq"]
+[ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Pokéball.png" id="6_u8n1g"]
+[ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://pin.tscn" id="7_plgx5"]
+[ext_resource type="Texture2D" uid="uid://bw2rpvfdoqvo7" path="res://Sprite/Pokeled.png" id="8_kpdw2"]
+[ext_resource type="Texture2D" uid="uid://ch0s4r0bbqdbt" path="res://Sprite/round.png" id="9_bapph"]
+[ext_resource type="FontFile" uid="uid://b20r41ml8qt5c" path="res://Sprite/GrapeSoda.ttf" id="9_xl7ru"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="10_eysfm"]
+[ext_resource type="SpriteFrames" uid="uid://dl8r2gqn8tr7p" path="res://Sprite/Pokemons/PokemonSprites.tres" id="12_rw5n3"]
+[ext_resource type="AudioStream" uid="uid://0gj786sjg0nx" path="res://Sounds/pokeball.ogg" id="13_0tekp"]
+[ext_resource type="Texture2D" uid="uid://dtom0f2m5sg2i" path="res://Sprite/pokedex.png" id="13_xhgqe"]
+[ext_resource type="AudioStream" uid="uid://b3pl42leidi8x" path="res://Sounds/catching.ogg" id="14_3je88"]
+[ext_resource type="Texture2D" uid="uid://uk00mvl0mpp1" path="res://Sprite/pokedex_pressed.png" id="14_52y2f"]
+[ext_resource type="AudioStream" uid="uid://rcuw26ewoav2" path="res://Sounds/showtime_undertale.ogg" id="15_m2yg6"]
+[ext_resource type="Texture2D" uid="uid://cdp7ufw0rcj88" path="res://Sprite/pokedex_hover.png" id="15_sqsr2"]
+[ext_resource type="FontFile" uid="uid://rw0divhmlh6r" path="res://Sprite/m5x7.ttf" id="16_k1mt0"]
+[ext_resource type="Script" path="res://PokedexDisplay.gd" id="17_y5neg"]
+[ext_resource type="Texture2D" uid="uid://duw5x5ggbpy5" path="res://Sprite/close.png" id="18_akpa7"]
+[ext_resource type="AudioStream" uid="uid://bfdygkjq7sr6c" path="res://Sounds/new_ball.ogg" id="19_7sijj"]
+[ext_resource type="Texture2D" uid="uid://c8n5ds1r88tif" path="res://Sprite/close_pressed.png" id="19_u00ih"]
+[ext_resource type="Texture2D" uid="uid://c0dtpct1im6a5" path="res://Sprite/close_hover.png" id="20_doqxe"]
+[ext_resource type="AudioStream" uid="uid://c4ieut7msoaqa" path="res://Sounds/launch_ball.ogg" id="20_neuii"]
+
+[sub_resource type="Animation" id="Animation_1br5m"]
+resource_name = "Closing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SoundPlayer/bgm_showtime:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.82843, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_0pkqa"]
+resource_name = "Pokemon"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokeled1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokeled2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pokeled3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pokeled4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pokeled5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ColorRect/Label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 628), Vector2(985, 627), Vector2(985, 627), Vector2(985, 667), Vector2(985, 667)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect/Label:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ColorRect/AnimatedSprite2D:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.9, 3.2, 4),
+"transitions": PackedFloat32Array(0.105112, 2.73208, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(3, 3)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../ColorRect/AnimatedSprite2D:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.2, 4),
+"transitions": PackedFloat32Array(25.1067, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ColorRect/Label2:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4, 4.5),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../ColorRect/Round:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 3.2, 4),
+"transitions": PackedFloat32Array(1.46409, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2.11, 2.11), Vector2(6.695, 6.695)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../ColorRect:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../ColorRect/NewLabel:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../SoundPlayer/sfx_catching:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../SoundPlayer/bgm_showtime:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../SoundPlayer/bgm_showtime:volume_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 4, 4.5),
+"transitions": PackedFloat32Array(1, 0.00224357, 0.25),
+"update": 0,
+"values": [-75.0, -75.0, 0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../ColorRect/RarityLabel:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_osbev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokeled1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokeled2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pokeled3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pokeled4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pokeled5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ColorRect/Label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1549, 628)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect/Label:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ColorRect/AnimatedSprite2D:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../ColorRect/AnimatedSprite2D:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ColorRect/Label2:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../ColorRect/Round:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../ColorRect:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../ColorRect/NewLabel:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../SoundPlayer/sfx_catching:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../SoundPlayer/bgm_showtime:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../SoundPlayer/bgm_showtime:volume_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../ColorRect/RarityLabel:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2rq7"]
+_data = {
+"Closing": SubResource("Animation_1br5m"),
+"Pokemon": SubResource("Animation_0pkqa"),
+"RESET": SubResource("Animation_osbev")
+}
+
+[sub_resource type="Animation" id="Animation_0hqaj"]
+resource_name = "Moving"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.8, 0.8, 0.8),
+"update": 0,
+"values": [Vector2(92, 10), Vector2(165, 10), Vector2(92, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_38kf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1het"]
+_data = {
+"Moving": SubResource("Animation_0hqaj"),
+"RESET": SubResource("Animation_38kf6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aor1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wft8"]
+radius = 7.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gl5p"]
+radius = 7.8
+
+[sub_resource type="Gradient" id="Gradient_nlc4g"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_ldp2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ba4mo"]
+resource_name = "new_animation"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.2),
+"transitions": PackedFloat32Array(2.54912, 1.86607, 2.63902, 1.6245),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfyfm"]
+_data = {
+"RESET": SubResource("Animation_ldp2e"),
+"new_animation": SubResource("Animation_ba4mo")
+}
+
+[sub_resource type="Animation" id="Animation_uaggq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uv1ut"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.435275, 2.21914, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmc6"]
+_data = {
+"RESET": SubResource("Animation_uaggq"),
+"new_animation": SubResource("Animation_uv1ut")
+}
+
+[sub_resource type="Animation" id="Animation_4g5rv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iuat4"]
+resource_name = "Scaling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7pmo"]
+_data = {
+"RESET": SubResource("Animation_4g5rv"),
+"Scaling": SubResource("Animation_iuat4")
+}
+
+[sub_resource type="Animation" id="Animation_ne3yu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sryhs"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.406126, 1.62451, 1),
+"update": 0,
+"values": [Vector2(0.835, 0.835), Vector2(1, 1), Vector2(0.835, 0.835)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2aj1k"]
+_data = {
+"RESET": SubResource("Animation_ne3yu"),
+"loop": SubResource("Animation_sryhs")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu540"]
+bg_color = Color(0, 0, 0, 0.666667)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wak41"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8br75"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4javf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_to0a8"]
+Panel/styles/panel = SubResource("StyleBoxFlat_yu540")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wak41")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_8br75")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_4javf")
+
+[node name="PachinkoGame" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_hvfcm")
+ball_scene = ExtResource("2_aubgf")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_w6d6w")
+
+[node name="Pokeleds" type="Node2D" parent="."]
+position = Vector2(128, 87)
+
+[node name="Pokeled1" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(-12, 0)
+texture = ExtResource("8_kpdw2")
+
+[node name="Pokeled2" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(-6, 0)
+texture = ExtResource("8_kpdw2")
+
+[node name="Pokeled3" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+texture = ExtResource("8_kpdw2")
+
+[node name="Pokeled4" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(6, 0)
+texture = ExtResource("8_kpdw2")
+
+[node name="Pokeled5" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(12, 0)
+texture = ExtResource("8_kpdw2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pokeleds"]
+libraries = {
+"": SubResource("AnimationLibrary_w2rq7")
+}
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="BallEmiter" type="Node2D" parent="."]
+position = Vector2(92, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="BallEmiter"]
+position = Vector2(0, -7)
+texture = ExtResource("4_arcsb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BallEmiter"]
+libraries = {
+"": SubResource("AnimationLibrary_c1het")
+}
+script = ExtResource("5_ue8rq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(71, 100)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-81, -57, 54, -152, 205, -72, 201, 62, 134, 32, 126, 16, 105, 6, 110, -14, 119, -33, 105, -84, 95, -93, 19, -93, 8, -84, -6, -30, 5, -13, 9, 6, -12, 16)
+
+[node name="NewBall" type="Area2D" parent="."]
+position = Vector2(128, 170)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBall"]
+polygon = PackedVector2Array(-3, -2, 3, -2, 3, 1, 2, 2, -2, 2, -3, 1)
+
+[node name="NewBall2" type="Area2D" parent="."]
+position = Vector2(95, 157)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBall2"]
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
+
+[node name="NewBall3" type="Area2D" parent="."]
+position = Vector2(161, 157)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBall3"]
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
+
+[node name="NewBall4" type="Area2D" parent="."]
+position = Vector2(181, 148)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBall4"]
+polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
+
+[node name="NewBall5" type="Area2D" parent="."]
+position = Vector2(76, 148)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBall5"]
+polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
+
+[node name="OutZone" type="Area2D" parent="."]
+position = Vector2(128, 85)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutZone"]
+modulate = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-70, 58, -50, 82, -7, 92, 7, 92, 38, 86, 52, 82, 70, 57, 71, 58, 53, 83, 30, 92, 3, 95, -11, 94, -52, 83, -72, 58)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(52, 148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_aor1d")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["bumper"]]
+position = Vector2(128, 77)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" groups=["bumper"]]
+shape = SubResource("CircleShape2D_2wft8")
+
+[node name="Pokeball" type="Area2D" parent="StaticBody2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/Pokeball"]
+shape = SubResource("CircleShape2D_2gl5p")
+
+[node name="Timer" type="Timer" parent="StaticBody2D3"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StaticBody2D3"]
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+preprocess = 2.0
+direction = Vector2(0, -3)
+spread = 49.88
+gravity = Vector2(0, 28.03)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+color_ramp = SubResource("Gradient_nlc4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+texture = ExtResource("6_u8n1g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D3"]
+libraries = {
+"": SubResource("AnimationLibrary_vfyfm")
+}
+
+[node name="PinContainer" type="Node2D" parent="."]
+
+[node name="Pin" parent="PinContainer" instance=ExtResource("7_plgx5")]
+
+[node name="Pin2" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(138, 28)
+
+[node name="Pin3" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(118, 28)
+
+[node name="Pin70" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(122, 22)
+
+[node name="Pin71" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(134, 22)
+
+[node name="Pin4" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(111, 39)
+
+[node name="Pin5" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(102, 51)
+
+[node name="Pin72" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(109, 58)
+
+[node name="Pin73" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(147, 58)
+
+[node name="Pin6" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(92, 56)
+
+[node name="Pin7" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(85, 48)
+
+[node name="Pin8" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(80, 45)
+
+[node name="Pin9" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(76, 42)
+
+[node name="Pin10" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(82, 57)
+
+[node name="Pin11" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(76, 63)
+
+[node name="Pin12" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(73, 67)
+
+[node name="Pin13" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(80, 76)
+
+[node name="Pin14" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(99, 70)
+
+[node name="Pin15" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(104, 74)
+
+[node name="Pin16" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(109, 79)
+
+[node name="Pin17" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(98, 86)
+
+[node name="Pin18" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(89, 90)
+
+[node name="Pin19" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(107, 95)
+
+[node name="Pin20" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(121, 101)
+
+[node name="Pin21" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(117, 106)
+
+[node name="Pin22" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(128, 111)
+
+[node name="Pin23" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(135, 101)
+
+[node name="Pin24" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(139, 106)
+
+[node name="Pin25" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(128, 93)
+
+[node name="Pin26" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(149, 95)
+
+[node name="Pin27" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(147, 79)
+
+[node name="Pin28" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(158, 86)
+
+[node name="Pin29" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(167, 90)
+
+[node name="Pin30" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(176, 76)
+
+[node name="Pin31" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(157, 70)
+
+[node name="Pin32" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(152, 74)
+
+[node name="Pin33" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(137, 68)
+
+[node name="Pin34" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(128, 64)
+
+[node name="Pin35" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(119, 68)
+
+[node name="Pin36" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(164, 56)
+
+[node name="Pin37" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(174, 57)
+
+[node name="Pin38" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(180, 63)
+
+[node name="Pin39" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(183, 67)
+
+[node name="Pin40" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(154, 51)
+
+[node name="Pin41" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(145, 39)
+
+[node name="Pin42" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(171, 48)
+
+[node name="Pin43" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(176, 45)
+
+[node name="Pin44" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(180, 42)
+
+[node name="Pin45" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(149, 117)
+
+[node name="Pin46" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(141, 122)
+
+[node name="Pin47" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(115, 122)
+
+[node name="Pin48" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(107, 117)
+
+[node name="Pin49" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(107, 136)
+
+[node name="Pin50" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(117, 140)
+
+[node name="Pin51" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(128, 145)
+
+[node name="Pin52" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(139, 140)
+
+[node name="Pin53" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(149, 136)
+
+[node name="Pin54" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(168, 128)
+
+[node name="Pin55" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(171, 113)
+
+[node name="Pin56" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(184, 123)
+
+[node name="Pin57" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(181, 135)
+
+[node name="Pin58" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(161, 145)
+
+[node name="Pin59" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(141, 156)
+
+[node name="Pin60" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(139, 162)
+
+[node name="Pin61" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(134, 166)
+
+[node name="Pin62" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(122, 166)
+
+[node name="Pin63" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(117, 162)
+
+[node name="Pin64" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(115, 156)
+
+[node name="Pin65" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(95, 145)
+
+[node name="Pin66" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(75, 135)
+
+[node name="Pin67" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(88, 128)
+
+[node name="Pin68" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(72, 123)
+
+[node name="Pin69" parent="PinContainer" instance=ExtResource("7_plgx5")]
+position = Vector2(85, 119)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Round" type="Sprite2D" parent="ColorRect"]
+position = Vector2(1088, 635)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_bapph")
+script = ExtResource("10_eysfm")
+
+[node name="Label" type="Label" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1549.0
+offset_top = 628.0
+offset_right = 1768.0
+offset_bottom = 651.0
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "A WILD POKEMON APPEARS !"
+
+[node name="Label2" type="Label" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 148.0
+offset_right = 244.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "ITS PLACEHOLDER !"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 159.0
+offset_right = 244.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56, 0.56)
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "Press to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationTree" type="AnimationPlayer" parent="ColorRect/Label3"]
+libraries = {
+"": SubResource("AnimationLibrary_4nmc6")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1088, 626)
+scale = Vector2(1e-05, 1e-05)
+sprite_frames = ExtResource("12_rw5n3")
+animation = &"25s"
+
+[node name="NewLabel" type="Label" parent="ColorRect"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = 36.0
+offset_right = 297.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "NEW !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/NewLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_v7pmo")
+}
+
+[node name="RarityLabel" type="Label" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = 41.0
+offset_right = 193.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.523598
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "SuperSuperRare !!! (6%)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/RarityLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_2aj1k")
+}
+
+[node name="HUD2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 254.0
+offset_bottom = 192.0
+
+[node name="Click" type="Button" parent="HUD2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="Label" type="Label" parent="HUD2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 178.0
+offset_right = 113.0
+offset_bottom = 201.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("9_xl7ru")
+text = "next ball in : 20m"
+
+[node name="TextureRect" type="TextureButton" parent="HUD2"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 172.0
+offset_right = 254.0
+offset_bottom = 190.0
+texture_normal = ExtResource("13_xhgqe")
+texture_pressed = ExtResource("14_52y2f")
+texture_hover = ExtResource("15_sqsr2")
+
+[node name="SoundPlayer" type="Node" parent="."]
+
+[node name="sfx_pokeball" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("13_0tekp")
+volume_db = -17.801
+bus = &"SFX"
+
+[node name="sfx_catching" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("14_3je88")
+bus = &"SFX"
+
+[node name="bgm_showtime" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("15_m2yg6")
+volume_db = -80.0
+bus = &"BGM"
+
+[node name="sfx_new_ball" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("19_7sijj")
+
+[node name="sfx_ball_launched" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("20_neuii")
+volume_db = -17.802
+
+[node name="Pokedex" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="Pokedex"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.658824)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pokedex"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pokedex/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Pokedex/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("16_k1mt0")
+theme_override_font_sizes/font_size = 16
+text = "Common : 100%
+Uncommon : 100%
+Rare : 100%
+SuperRare : 100%
+SuperSuperRare : 100%
+UltraRare : 100%
+MegaRare : 100%"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Pokedex"]
+custom_minimum_size = Vector2(218, 188)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_right = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_to0a8")
+
+[node name="PokedexDisplay" type="GridContainer" parent="Pokedex/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+script = ExtResource("17_y5neg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 2.0
+offset_right = 255.0
+offset_bottom = 18.0
+texture_normal = ExtResource("18_akpa7")
+texture_pressed = ExtResource("19_u00ih")
+texture_hover = ExtResource("20_doqxe")
+
+[node name="Shiny_enable" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 20.0
+offset_right = 255.0
+offset_bottom = 36.0
+texture_normal = ExtResource("18_akpa7")
+texture_pressed = ExtResource("19_u00ih")
+texture_hover = ExtResource("20_doqxe")
+
+[connection signal="body_entered" from="NewBall" to="." method="_on_new_ball_body_entered"]
+[connection signal="body_entered" from="NewBall2" to="." method="_on_new_ball_body_entered"]
+[connection signal="body_entered" from="NewBall3" to="." method="_on_new_ball_body_entered"]
+[connection signal="body_entered" from="NewBall4" to="." method="_on_new_ball_body_entered"]
+[connection signal="body_entered" from="NewBall5" to="." method="_on_new_ball_body_entered"]
+[connection signal="body_entered" from="OutZone" to="." method="_on_out_zone_body_entered"]
+[connection signal="body_entered" from="StaticBody2D3/Pokeball" to="." method="_on_pokeball_body_entered"]
+[connection signal="pressed" from="HUD2/Click" to="." method="_on_click_pressed"]
+[connection signal="pressed" from="HUD2/TextureRect" to="." method="_on_texture_rect_pressed"]
+[connection signal="pressed" from="Pokedex/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pokedex/Shiny_enable" to="." method="_on_shiny_enable_pressed"]

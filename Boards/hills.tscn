@@ -1,0 +1,616 @@
+[gd_scene load_steps=20 format=3 uid="uid://lau8trhpxpax"]
+
+[ext_resource type="Texture2D" uid="uid://w5r5d12gr57p" path="res://Sprite/Layout2.png" id="1_1x27i"]
+[ext_resource type="Script" path="res://Boards/hills.gd" id="1_457t7"]
+[ext_resource type="Texture2D" uid="uid://bw2rpvfdoqvo7" path="res://Sprite/Pokeled.png" id="2_g28ng"]
+[ext_resource type="Texture2D" uid="uid://cjg1tddguqmhe" path="res://Sprite/Controller.png" id="3_n8jfs"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="4_hiwt4"]
+[ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Pokéball.png" id="5_dlit3"]
+[ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://pin.tscn" id="6_c20yh"]
+
+[sub_resource type="Animation" id="Animation_rntxr"]
+resource_name = "Pokemon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokeled1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokeled2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pokeled3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pokeled4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pokeled5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1), Color(1, 1, 1, 1), Color(0.497474, 0.497474, 0.497474, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7ls4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokeled1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokeled2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pokeled3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pokeled4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pokeled5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.497474, 0.497474, 0.497474, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s341i"]
+_data = {
+"Pokemon": SubResource("Animation_rntxr"),
+"RESET": SubResource("Animation_7ls4d")
+}
+
+[sub_resource type="Animation" id="Animation_0hqaj"]
+resource_name = "Moving"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.8, 0.8, 0.8),
+"update": 0,
+"values": [Vector2(92, 10), Vector2(165, 10), Vector2(92, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_38kf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1het"]
+_data = {
+"Moving": SubResource("Animation_0hqaj"),
+"RESET": SubResource("Animation_38kf6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wft8"]
+radius = 7.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gl5p"]
+radius = 7.8
+
+[sub_resource type="Gradient" id="Gradient_nlc4g"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_ldp2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ba4mo"]
+resource_name = "new_animation"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.2),
+"transitions": PackedFloat32Array(2.54912, 1.86607, 2.63902, 1.6245),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfyfm"]
+_data = {
+"RESET": SubResource("Animation_ldp2e"),
+"new_animation": SubResource("Animation_ba4mo")
+}
+
+[node name="Hills" type="Node2D"]
+script = ExtResource("1_457t7")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1x27i")
+
+[node name="Pokeleds" type="Node2D" parent="."]
+position = Vector2(128, 87)
+
+[node name="Pokeled1" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(-12, 0)
+texture = ExtResource("2_g28ng")
+
+[node name="Pokeled2" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(-6, 0)
+texture = ExtResource("2_g28ng")
+
+[node name="Pokeled3" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+texture = ExtResource("2_g28ng")
+
+[node name="Pokeled4" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(6, 0)
+texture = ExtResource("2_g28ng")
+
+[node name="Pokeled5" type="Sprite2D" parent="Pokeleds"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+position = Vector2(12, 0)
+texture = ExtResource("2_g28ng")
+
+[node name="PokeledAnimator" type="AnimationPlayer" parent="Pokeleds"]
+libraries = {
+"": SubResource("AnimationLibrary_s341i")
+}
+
+[node name="BallsChildren" type="Node2D" parent="."]
+
+[node name="BallEmiter" type="Node2D" parent="."]
+position = Vector2(92, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="BallEmiter"]
+position = Vector2(0, -7)
+texture = ExtResource("3_n8jfs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BallEmiter"]
+libraries = {
+"": SubResource("AnimationLibrary_c1het")
+}
+script = ExtResource("4_hiwt4")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(71, 100)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(-81, -57, 54, -152, 205, -72, 201, 62, 134, 32, 126, 16, 105, 6, 110, -14, 119, -33, 105, -84, 95, -93, 19, -93, 8, -84, -6, -30, 5, -13, 9, 6, -12, 16)
+
+[node name="NewBalls" type="Node2D" parent="."]
+
+[node name="NewBall" type="Area2D" parent="NewBalls"]
+position = Vector2(128, 170)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall"]
+polygon = PackedVector2Array(-3, -2, 3, -2, 3, 1, 2, 2, -2, 2, -3, 1)
+
+[node name="NewBall2" type="Area2D" parent="NewBalls"]
+position = Vector2(95, 157)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall2"]
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
+
+[node name="NewBall3" type="Area2D" parent="NewBalls"]
+position = Vector2(161, 157)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall3"]
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
+
+[node name="NewBall4" type="Area2D" parent="NewBalls"]
+position = Vector2(181, 148)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall4"]
+polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
+
+[node name="NewBall5" type="Area2D" parent="NewBalls"]
+position = Vector2(76, 148)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall5"]
+polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
+
+[node name="OutZones" type="Node2D" parent="."]
+
+[node name="OutZone" type="Area2D" parent="OutZones"]
+position = Vector2(128, 85)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutZones/OutZone"]
+modulate = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-70, 58, -50, 82, -7, 92, 7, 92, 38, 86, 52, 82, 70, 57, 71, 58, 53, 83, 30, 92, 3, 95, -11, 94, -52, 83, -72, 58)
+
+[node name="PokeballCatching" type="StaticBody2D" parent="."]
+position = Vector2(128, 77)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PokeballCatching"]
+shape = SubResource("CircleShape2D_2wft8")
+
+[node name="Pokeball" type="Area2D" parent="PokeballCatching"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PokeballCatching/Pokeball"]
+shape = SubResource("CircleShape2D_2gl5p")
+
+[node name="Timer" type="Timer" parent="PokeballCatching"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PokeballCatching"]
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+preprocess = 2.0
+direction = Vector2(0, -3)
+spread = 49.88
+gravity = Vector2(0, 28.03)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+color_ramp = SubResource("Gradient_nlc4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="PokeballCatching"]
+texture = ExtResource("5_dlit3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PokeballCatching"]
+libraries = {
+"": SubResource("AnimationLibrary_vfyfm")
+}
+
+[node name="PinContainer" type="Node2D" parent="."]
+
+[node name="Pin" parent="PinContainer" instance=ExtResource("6_c20yh")]
+
+[node name="Pin2" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(138, 28)
+
+[node name="Pin3" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(118, 28)
+
+[node name="Pin70" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(122, 22)
+
+[node name="Pin71" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(134, 22)
+
+[node name="Pin4" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(111, 39)
+
+[node name="Pin5" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(102, 51)
+
+[node name="Pin72" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(109, 58)
+
+[node name="Pin73" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(147, 58)
+
+[node name="Pin6" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(92, 56)
+
+[node name="Pin7" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(85, 48)
+
+[node name="Pin8" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(80, 45)
+
+[node name="Pin9" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(76, 42)
+
+[node name="Pin10" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(82, 57)
+
+[node name="Pin11" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(76, 63)
+
+[node name="Pin12" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(73, 67)
+
+[node name="Pin13" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(80, 76)
+
+[node name="Pin14" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(99, 70)
+
+[node name="Pin15" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(104, 74)
+
+[node name="Pin16" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(109, 79)
+
+[node name="Pin17" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(98, 86)
+
+[node name="Pin18" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(89, 90)
+
+[node name="Pin19" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(107, 95)
+
+[node name="Pin20" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(121, 101)
+
+[node name="Pin21" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(117, 106)
+
+[node name="Pin22" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(128, 111)
+
+[node name="Pin23" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(135, 101)
+
+[node name="Pin24" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(139, 106)
+
+[node name="Pin25" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(128, 93)
+
+[node name="Pin26" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(149, 95)
+
+[node name="Pin27" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(147, 79)
+
+[node name="Pin28" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(158, 86)
+
+[node name="Pin29" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(167, 90)
+
+[node name="Pin30" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(176, 76)
+
+[node name="Pin31" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(157, 70)
+
+[node name="Pin32" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(152, 74)
+
+[node name="Pin33" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(137, 68)
+
+[node name="Pin34" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(128, 64)
+
+[node name="Pin35" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(119, 68)
+
+[node name="Pin36" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(164, 56)
+
+[node name="Pin37" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(174, 57)
+
+[node name="Pin38" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(180, 63)
+
+[node name="Pin39" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(183, 67)
+
+[node name="Pin40" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(154, 51)
+
+[node name="Pin41" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(145, 39)
+
+[node name="Pin42" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(171, 48)
+
+[node name="Pin43" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(176, 45)
+
+[node name="Pin44" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(180, 42)
+
+[node name="Pin45" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(149, 117)
+
+[node name="Pin46" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(141, 122)
+
+[node name="Pin47" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(115, 122)
+
+[node name="Pin48" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(107, 117)
+
+[node name="Pin49" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(107, 136)
+
+[node name="Pin50" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(117, 140)
+
+[node name="Pin51" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(128, 145)
+
+[node name="Pin52" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(139, 140)
+
+[node name="Pin53" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(149, 136)
+
+[node name="Pin54" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(168, 128)
+
+[node name="Pin55" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(171, 113)
+
+[node name="Pin56" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(184, 123)
+
+[node name="Pin57" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(181, 135)
+
+[node name="Pin58" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(161, 145)
+
+[node name="Pin59" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(141, 156)
+
+[node name="Pin60" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(139, 162)
+
+[node name="Pin61" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(134, 166)
+
+[node name="Pin62" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(122, 166)
+
+[node name="Pin63" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(117, 162)
+
+[node name="Pin64" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(115, 156)
+
+[node name="Pin65" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(95, 145)
+
+[node name="Pin66" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(75, 135)
+
+[node name="Pin67" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(88, 128)
+
+[node name="Pin68" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(72, 123)
+
+[node name="Pin69" parent="PinContainer" instance=ExtResource("6_c20yh")]
+position = Vector2(85, 119)

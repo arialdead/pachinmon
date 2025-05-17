@@ -1,0 +1,958 @@
+[gd_resource type="SpriteFrames" load_steps=106 format=3 uid="uid://dl8r2gqn8tr7p"]
+
+[ext_resource type="Texture2D" uid="uid://d234yvbpkksyw" path="res://Sprite/Pokemons/10033.png" id="1_e1gys"]
+[ext_resource type="Texture2D" uid="uid://wulii5w71jdc" path="res://Sprite/Pokemons/115.png" id="1_qfxjt"]
+[ext_resource type="Texture2D" uid="uid://bhm206l0tv278" path="res://Sprite/Pokemons/133.png" id="2_ipqwl"]
+[ext_resource type="Texture2D" uid="uid://x41nyqs5yboc" path="res://Sprite/Pokemons/10034.png" id="2_pgnp3"]
+[ext_resource type="Texture2D" uid="uid://c08d0pjt3hm6g" path="res://Sprite/Pokemons/10033s.png" id="2_tsv5b"]
+[ext_resource type="Texture2D" uid="uid://pg0ued7a22x4" path="res://Sprite/Pokemons/143.png" id="3_gydgr"]
+[ext_resource type="Texture2D" uid="uid://f08e0lrdsc6l" path="res://Sprite/Pokemons/10036.png" id="3_v8bal"]
+[ext_resource type="Texture2D" uid="uid://dayk6qfvyyhuo" path="res://Sprite/Pokemons/10034s.png" id="4_17cqg"]
+[ext_resource type="Texture2D" uid="uid://du6ugtdtymetb" path="res://Sprite/Pokemons/10039.png" id="4_i6nef"]
+[ext_resource type="Texture2D" uid="uid://h7uumak5a1sm" path="res://Sprite/Pokemons/10073.png" id="5_an3ja"]
+[ext_resource type="Texture2D" uid="uid://bkp5cbm4ylfbd" path="res://Sprite/Pokemons/161.png" id="5_qsl03"]
+[ext_resource type="Texture2D" uid="uid://bbps8farsv6r3" path="res://Sprite/Pokemons/10036s.png" id="6_58kfq"]
+[ext_resource type="Texture2D" uid="uid://km0l85dahl2q" path="res://Sprite/Pokemons/162.png" id="6_cs7jp"]
+[ext_resource type="Texture2D" uid="uid://bap14xyrq33fi" path="res://Sprite/Pokemons/10089.png" id="6_qvjse"]
+[ext_resource type="Texture2D" uid="uid://dvdgc8q367m6s" path="res://Sprite/Pokemons/10090.png" id="7_5w2r0"]
+[ext_resource type="Texture2D" uid="uid://ckqt784qx17n5" path="res://Sprite/Pokemons/18.png" id="7_p85v1"]
+[ext_resource type="Texture2D" uid="uid://444kunvocmw" path="res://Sprite/Pokemons/10039s.png" id="8_fbl0c"]
+[ext_resource type="Texture2D" uid="uid://b7y62dq4505sq" path="res://Sprite/Pokemons/20.png" id="8_jx5l3"]
+[ext_resource type="Texture2D" uid="uid://d0vyy6k0y3w12" path="res://Sprite/Pokemons/19.png" id="8_mx2rv"]
+[ext_resource type="Texture2D" uid="uid://pgregs4200vl" path="res://Sprite/Pokemons/115s.png" id="9_5fcj2"]
+[ext_resource type="Texture2D" uid="uid://d2s00whqjdybe" path="res://Sprite/Pokemons/25.png" id="9_sx07h"]
+[ext_resource type="Texture2D" uid="uid://5vvaojtxidtq" path="res://Sprite/Pokemons/10073s.png" id="10_n6ly6"]
+[ext_resource type="Texture2D" uid="uid://dwhoovjako5nr" path="res://Sprite/Pokemons/251.png" id="10_t5f0v"]
+[ext_resource type="Texture2D" uid="uid://u3v0t7dekqox" path="res://Sprite/Pokemons/263.png" id="11_7fdgm"]
+[ext_resource type="Texture2D" uid="uid://cud0wv2fr3aoc" path="res://Sprite/Pokemons/15.png" id="11_oh4b3"]
+[ext_resource type="Texture2D" uid="uid://cjs3xacm043je" path="res://Sprite/Pokemons/133s.png" id="11_wd11h"]
+[ext_resource type="Texture2D" uid="uid://csknbydrab344" path="res://Sprite/Pokemons/264.png" id="12_4ialk"]
+[ext_resource type="Texture2D" uid="uid://dld4bqn7ge8wa" path="res://Sprite/Pokemons/15s.png" id="12_mtday"]
+[ext_resource type="Texture2D" uid="uid://hrklfht78ypt" path="res://Sprite/Pokemons/16.png" id="12_o3xkx"]
+[ext_resource type="Texture2D" uid="uid://b2khupkp6wy0i" path="res://Sprite/Pokemons/10089s.png" id="12_r8rjo"]
+[ext_resource type="Texture2D" uid="uid://i87tseq21sph" path="res://Sprite/Pokemons/143s.png" id="13_bm4yy"]
+[ext_resource type="Texture2D" uid="uid://dm6c1pnue2px6" path="res://Sprite/Pokemons/276.png" id="13_qh4xu"]
+[ext_resource type="Texture2D" uid="uid://bjnbwvg7el1wi" path="res://Sprite/Pokemons/28.png" id="14_546vb"]
+[ext_resource type="Texture2D" uid="uid://d0liw1o120g5k" path="res://Sprite/Pokemons/10090s.png" id="14_lgrye"]
+[ext_resource type="Texture2D" uid="uid://chpbv5kymkbse" path="res://Sprite/Pokemons/335.png" id="15_sljdp"]
+[ext_resource type="Texture2D" uid="uid://bgc4ynauklqw3" path="res://Sprite/Pokemons/16s.png" id="16_2qh30"]
+[ext_resource type="Texture2D" uid="uid://c7srqlemv1ivk" path="res://Sprite/Pokemons/336.png" id="16_ogyd4"]
+[ext_resource type="Texture2D" uid="uid://bfauglovadmxg" path="res://Sprite/Pokemons/362.png" id="17_01jmt"]
+[ext_resource type="Texture2D" uid="uid://dpfu8m0fcw38c" path="res://Sprite/Pokemons/161s.png" id="18_8vcim"]
+[ext_resource type="Texture2D" uid="uid://chnma06y6f6d" path="res://Sprite/Pokemons/18s.png" id="18_abulo"]
+[ext_resource type="Texture2D" uid="uid://c7o851qyiq43x" path="res://Sprite/Pokemons/373.png" id="18_pyfdc"]
+[ext_resource type="Texture2D" uid="uid://b0ryeb1tau1ya" path="res://Sprite/Pokemons/399.png" id="19_hwn0j"]
+[ext_resource type="Texture2D" uid="uid://h3ulb25mutjq" path="res://Sprite/Pokemons/19s.png" id="20_bmllm"]
+[ext_resource type="Texture2D" uid="uid://dc82vq5rjqex0" path="res://Sprite/Pokemons/162s.png" id="20_c20g4"]
+[ext_resource type="Texture2D" uid="uid://c2n1wnrlgtifr" path="res://Sprite/Pokemons/400.png" id="20_xotcb"]
+[ext_resource type="Texture2D" uid="uid://cssv6rnliutln" path="res://Sprite/Pokemons/448.png" id="21_2gp6s"]
+[ext_resource type="Texture2D" uid="uid://cthygjovhhqxf" path="res://Sprite/Pokemons/20s.png" id="22_5aw28"]
+[ext_resource type="Texture2D" uid="uid://bf2esq04gqvuw" path="res://Sprite/Pokemons/492.png" id="22_mgsit"]
+[ext_resource type="Texture2D" uid="uid://kbmb6ypwcvjx" path="res://Sprite/Pokemons/504.png" id="23_ostte"]
+[ext_resource type="Texture2D" uid="uid://42r1l8jbwqui" path="res://Sprite/Pokemons/505.png" id="24_cyuq2"]
+[ext_resource type="Texture2D" uid="uid://wom7sjikd0nx" path="res://Sprite/Pokemons/3.png" id="24_jcfwr"]
+[ext_resource type="Texture2D" uid="uid://c6nwtgcy6y4wu" path="res://Sprite/Pokemons/519.png" id="25_0hsai"]
+[ext_resource type="Texture2D" uid="uid://bl4p0sbpk5lrj" path="res://Sprite/Pokemons/52.png" id="26_7g5br"]
+[ext_resource type="Texture2D" uid="uid://b4n8pxrggymgg" path="res://Sprite/Pokemons/25s.png" id="26_toxs1"]
+[ext_resource type="Texture2D" uid="uid://ctvlkglbvf45j" path="res://Sprite/Pokemons/628.png" id="27_lbxb2"]
+[ext_resource type="Texture2D" uid="uid://drtr805lt6vqy" path="res://Sprite/Pokemons/647.png" id="28_ipfls"]
+[ext_resource type="Texture2D" uid="uid://dcjrfrqlxbq2w" path="res://Sprite/Pokemons/659.png" id="29_1k4ek"]
+[ext_resource type="Texture2D" uid="uid://bhg4yerqpbnp2" path="res://Sprite/Pokemons/251s.png" id="30_inuu3"]
+[ext_resource type="Texture2D" uid="uid://mepnqx8kmo22" path="res://Sprite/Pokemons/661.png" id="30_yqemi"]
+[ext_resource type="Texture2D" uid="uid://pwds8ppn1hio" path="res://Sprite/Pokemons/662.png" id="31_7b57f"]
+[ext_resource type="Texture2D" uid="uid://cii8j45e5tb4f" path="res://Sprite/Pokemons/700.png" id="32_m7yra"]
+[ext_resource type="Texture2D" uid="uid://dxsskrxp55nrm" path="res://Sprite/Pokemons/263s.png" id="33_dmke8"]
+[ext_resource type="Texture2D" uid="uid://dk7agqttkbbrv" path="res://Sprite/Pokemons/735.png" id="33_e7kgx"]
+[ext_resource type="Texture2D" uid="uid://cjafo5oa6q06a" path="res://Sprite/Pokemons/819.png" id="34_01m8r"]
+[ext_resource type="Texture2D" uid="uid://beo1up1miajbj" path="res://Sprite/Pokemons/841.png" id="35_grgsd"]
+[ext_resource type="Texture2D" uid="uid://csve68nvmx1mq" path="res://Sprite/Pokemons/264s.png" id="35_qqqd5"]
+[ext_resource type="Texture2D" uid="uid://bdbnsmywws5xg" path="res://Sprite/Pokemons/842.png" id="36_vstjs"]
+[ext_resource type="Texture2D" uid="uid://dwt6wl3ig02dk" path="res://Sprite/Pokemons/6.png" id="37_0anwe"]
+[ext_resource type="Texture2D" uid="uid://csjgnjxxjgl5a" path="res://Sprite/Pokemons/859.png" id="37_iw53u"]
+[ext_resource type="Texture2D" uid="uid://dtecs75i00tj6" path="res://Sprite/Pokemons/276s.png" id="37_x3syx"]
+[ext_resource type="Texture2D" uid="uid://decxqwte56k4l" path="res://Sprite/Pokemons/893.png" id="38_dumm3"]
+[ext_resource type="Texture2D" uid="uid://d00er835koi4b" path="res://Sprite/Pokemons/28s.png" id="39_fmq6a"]
+[ext_resource type="Texture2D" uid="uid://br4o2wd52woeu" path="res://Sprite/Pokemons/894.png" id="39_vgxgq"]
+[ext_resource type="Texture2D" uid="uid://ci2iieaf7s8hj" path="res://Sprite/Pokemons/895.png" id="40_2xjpp"]
+[ext_resource type="Texture2D" uid="uid://cow3ovowcqwtu" path="res://Sprite/Pokemons/898.png" id="41_18l6t"]
+[ext_resource type="Texture2D" uid="uid://bltja2qdujmuy" path="res://Sprite/Pokemons/335s.png" id="42_tej5a"]
+[ext_resource type="Texture2D" uid="uid://bhg7vexhygbga" path="res://Sprite/Pokemons/336s.png" id="44_ssf23"]
+[ext_resource type="Texture2D" uid="uid://bvfv6efrmm0n1" path="res://Sprite/Pokemons/362s.png" id="46_eh01g"]
+[ext_resource type="Texture2D" uid="uid://bhbv3avr0pjj6" path="res://Sprite/Pokemons/373s.png" id="48_6u6b3"]
+[ext_resource type="Texture2D" uid="uid://d1cdg857bm2t" path="res://Sprite/Pokemons/399s.png" id="50_g5slw"]
+[ext_resource type="Texture2D" uid="uid://bgfrl4e0jscyo" path="res://Sprite/Pokemons/400s.png" id="52_tllwq"]
+[ext_resource type="Texture2D" uid="uid://b8ew8ojqqct0t" path="res://Sprite/Pokemons/9.png" id="53_t7rrs"]
+[ext_resource type="Texture2D" uid="uid://b1s8bh0sepc7e" path="res://Sprite/Pokemons/448s.png" id="54_mwf0g"]
+[ext_resource type="Texture2D" uid="uid://enncd2nsqw0j" path="res://Sprite/Pokemons/492s.png" id="56_mbdmr"]
+[ext_resource type="Texture2D" uid="uid://bptv8c4kbg15q" path="res://Sprite/Pokemons/504s.png" id="58_i50f6"]
+[ext_resource type="Texture2D" uid="uid://dpnyhumho5duy" path="res://Sprite/Pokemons/52s.png" id="62_pe1mj"]
+[ext_resource type="Texture2D" uid="uid://jpjrwtjpqg4w" path="res://Sprite/Pokemons/505s.png" id="67_hgjuy"]
+[ext_resource type="Texture2D" uid="uid://lly2ambvri4h" path="res://Sprite/Pokemons/519s.png" id="68_hl8mq"]
+[ext_resource type="Texture2D" uid="uid://2jnn28p1xtdd" path="res://Sprite/Pokemons/628s.png" id="73_7funa"]
+[ext_resource type="Texture2D" uid="uid://cl3qdgvjsh2sv" path="res://Sprite/Pokemons/647s.png" id="75_voji8"]
+[ext_resource type="Texture2D" uid="uid://bw4jjpiaefeua" path="res://Sprite/Pokemons/659s.png" id="77_qkv0n"]
+[ext_resource type="Texture2D" uid="uid://bghheccfpmgbb" path="res://Sprite/Pokemons/661s.png" id="79_aenj7"]
+[ext_resource type="Texture2D" uid="uid://crrvfwup2kvi3" path="res://Sprite/Pokemons/662s.png" id="81_lhpbx"]
+[ext_resource type="Texture2D" uid="uid://dfiibghndrv56" path="res://Sprite/Pokemons/700s.png" id="83_0jurq"]
+[ext_resource type="Texture2D" uid="uid://de2es6rkh4j6u" path="res://Sprite/Pokemons/735s.png" id="85_f64hd"]
+[ext_resource type="Texture2D" uid="uid://d371o56q8bnkx" path="res://Sprite/Pokemons/784s.png" id="86_e1kgd"]
+[ext_resource type="Texture2D" uid="uid://cwgvqcrciwend" path="res://Sprite/Pokemons/784.png" id="87_eaw3l"]
+[ext_resource type="Texture2D" uid="uid://cdxaypwtnvyl7" path="res://Sprite/Pokemons/819s.png" id="88_apy6d"]
+[ext_resource type="Texture2D" uid="uid://cmfxkm8wwf37g" path="res://Sprite/Pokemons/841s.png" id="90_w1dqp"]
+[ext_resource type="Texture2D" uid="uid://kuc8nimya5tt" path="res://Sprite/Pokemons/842s.png" id="92_6h3rn"]
+[ext_resource type="Texture2D" uid="uid://byfdtxf8nllcs" path="res://Sprite/Pokemons/859s.png" id="94_kt4i8"]
+[ext_resource type="Texture2D" uid="uid://c3hmr18taqf0n" path="res://Sprite/Pokemons/893s.png" id="96_4n5l5"]
+[ext_resource type="Texture2D" uid="uid://cslwxib8kccqt" path="res://Sprite/Pokemons/894s.png" id="98_h0b58"]
+[ext_resource type="Texture2D" uid="uid://c7np82biivwto" path="res://Sprite/Pokemons/895s.png" id="100_lbk8b"]
+[ext_resource type="Texture2D" uid="uid://dwhxmmwmxqms2" path="res://Sprite/Pokemons/898s.png" id="102_4q2y8"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e1gys")
+}],
+"loop": true,
+"name": &"10033",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tsv5b")
+}],
+"loop": true,
+"name": &"10033s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pgnp3")
+}],
+"loop": true,
+"name": &"10034",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_17cqg")
+}],
+"loop": true,
+"name": &"10034s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_v8bal")
+}],
+"loop": true,
+"name": &"10036",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_58kfq")
+}],
+"loop": true,
+"name": &"10036s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i6nef")
+}],
+"loop": true,
+"name": &"10039",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fbl0c")
+}],
+"loop": true,
+"name": &"10039s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_an3ja")
+}],
+"loop": true,
+"name": &"10073",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_n6ly6")
+}],
+"loop": true,
+"name": &"10073s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qvjse")
+}],
+"loop": true,
+"name": &"10089",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r8rjo")
+}],
+"loop": true,
+"name": &"10089s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5w2r0")
+}],
+"loop": true,
+"name": &"10090",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lgrye")
+}],
+"loop": true,
+"name": &"10090s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qfxjt")
+}],
+"loop": true,
+"name": &"115",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5fcj2")
+}],
+"loop": true,
+"name": &"115s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ipqwl")
+}],
+"loop": true,
+"name": &"133",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wd11h")
+}],
+"loop": true,
+"name": &"133s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gydgr")
+}],
+"loop": true,
+"name": &"143",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_bm4yy")
+}],
+"loop": true,
+"name": &"143s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_oh4b3")
+}],
+"loop": true,
+"name": &"15",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mtday")
+}],
+"loop": true,
+"name": &"15s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_o3xkx")
+}],
+"loop": true,
+"name": &"16",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qsl03")
+}],
+"loop": true,
+"name": &"161",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_8vcim")
+}],
+"loop": true,
+"name": &"161s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cs7jp")
+}],
+"loop": true,
+"name": &"162",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_c20g4")
+}],
+"loop": true,
+"name": &"162s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_2qh30")
+}],
+"loop": true,
+"name": &"16s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_p85v1")
+}],
+"loop": true,
+"name": &"18",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_abulo")
+}],
+"loop": true,
+"name": &"18s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mx2rv")
+}],
+"loop": true,
+"name": &"19",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_bmllm")
+}],
+"loop": true,
+"name": &"19s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jx5l3")
+}],
+"loop": true,
+"name": &"20",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_5aw28")
+}],
+"loop": true,
+"name": &"20s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sx07h")
+}],
+"loop": true,
+"name": &"25",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_t5f0v")
+}],
+"loop": true,
+"name": &"251",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_inuu3")
+}],
+"loop": true,
+"name": &"251s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_7fdgm")
+}],
+"loop": true,
+"name": &"253",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_toxs1")
+}],
+"loop": true,
+"name": &"25s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_7fdgm")
+}],
+"loop": true,
+"name": &"263",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_dmke8")
+}],
+"loop": true,
+"name": &"263s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_4ialk")
+}],
+"loop": true,
+"name": &"264",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_qqqd5")
+}],
+"loop": true,
+"name": &"264s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qh4xu")
+}],
+"loop": true,
+"name": &"276",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_x3syx")
+}],
+"loop": true,
+"name": &"276s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_546vb")
+}],
+"loop": true,
+"name": &"28",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_fmq6a")
+}],
+"loop": true,
+"name": &"28s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_jcfwr")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sljdp")
+}],
+"loop": true,
+"name": &"335",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_tej5a")
+}],
+"loop": true,
+"name": &"335s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ogyd4")
+}],
+"loop": true,
+"name": &"336",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_ssf23")
+}],
+"loop": true,
+"name": &"336s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_01jmt")
+}],
+"loop": true,
+"name": &"362",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_eh01g")
+}],
+"loop": true,
+"name": &"362s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_pyfdc")
+}],
+"loop": true,
+"name": &"373",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_6u6b3")
+}],
+"loop": true,
+"name": &"373s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hwn0j")
+}],
+"loop": true,
+"name": &"399",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_g5slw")
+}],
+"loop": true,
+"name": &"399s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_xotcb")
+}],
+"loop": true,
+"name": &"400",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_tllwq")
+}],
+"loop": true,
+"name": &"400s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_2gp6s")
+}],
+"loop": true,
+"name": &"448",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("54_mwf0g")
+}],
+"loop": true,
+"name": &"448s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_mgsit")
+}],
+"loop": true,
+"name": &"492",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("56_mbdmr")
+}],
+"loop": true,
+"name": &"492s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_ostte")
+}],
+"loop": true,
+"name": &"504",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_i50f6")
+}],
+"loop": true,
+"name": &"504s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_cyuq2")
+}],
+"loop": true,
+"name": &"505",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_hgjuy")
+}],
+"loop": true,
+"name": &"505s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_0hsai")
+}],
+"loop": true,
+"name": &"519",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("68_hl8mq")
+}],
+"loop": true,
+"name": &"519s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_7g5br")
+}],
+"loop": true,
+"name": &"52",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_pe1mj")
+}],
+"loop": true,
+"name": &"52s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_0anwe")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_lbxb2")
+}],
+"loop": true,
+"name": &"628",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_7funa")
+}],
+"loop": true,
+"name": &"628s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_ipfls")
+}],
+"loop": true,
+"name": &"647",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("75_voji8")
+}],
+"loop": true,
+"name": &"647s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_1k4ek")
+}],
+"loop": true,
+"name": &"659",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("77_qkv0n")
+}],
+"loop": true,
+"name": &"659s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_yqemi")
+}],
+"loop": true,
+"name": &"661",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("79_aenj7")
+}],
+"loop": true,
+"name": &"661s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_7b57f")
+}],
+"loop": true,
+"name": &"662",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("81_lhpbx")
+}],
+"loop": true,
+"name": &"662s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_m7yra")
+}],
+"loop": true,
+"name": &"700",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("83_0jurq")
+}],
+"loop": true,
+"name": &"700s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_e7kgx")
+}],
+"loop": true,
+"name": &"735",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("85_f64hd")
+}],
+"loop": true,
+"name": &"735s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("87_eaw3l")
+}],
+"loop": true,
+"name": &"784",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("86_e1kgd")
+}],
+"loop": true,
+"name": &"784s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_01m8r")
+}],
+"loop": true,
+"name": &"819",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("88_apy6d")
+}],
+"loop": true,
+"name": &"819s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_grgsd")
+}],
+"loop": true,
+"name": &"841",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("90_w1dqp")
+}],
+"loop": true,
+"name": &"841s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_vstjs")
+}],
+"loop": true,
+"name": &"842",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("92_6h3rn")
+}],
+"loop": true,
+"name": &"842s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_iw53u")
+}],
+"loop": true,
+"name": &"859",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("94_kt4i8")
+}],
+"loop": true,
+"name": &"859s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_dumm3")
+}],
+"loop": true,
+"name": &"893",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("96_4n5l5")
+}],
+"loop": true,
+"name": &"893s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_vgxgq")
+}],
+"loop": true,
+"name": &"894",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("98_h0b58")
+}],
+"loop": true,
+"name": &"894s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_2xjpp")
+}],
+"loop": true,
+"name": &"895",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("100_lbk8b")
+}],
+"loop": true,
+"name": &"895s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_18l6t")
+}],
+"loop": true,
+"name": &"898",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("102_4q2y8")
+}],
+"loop": true,
+"name": &"898s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_t7rrs")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
