@@ -13,8 +13,8 @@ var balls = []
 var can_play=true
 var can_continue=true
 var save
-var display_shiny = false
 var board = "hills"
+var display_shiny = false
 
 #Déclaration de variable que c'est chiant a retrouver
 @onready var catch_animator = $ColorRect/AnimationPlayer
@@ -451,7 +451,6 @@ func _on_button_pressed():
 
 
 func _on_texture_rect_pressed():
-	display_shiny = false
 	$Pokedex/passhiny.show()
 	$Pokedex/shiny.hide()
 	match board:
@@ -460,29 +459,20 @@ func _on_texture_rect_pressed():
 	$Pokedex.show()
 	pass # Replace with function body.
 
-
-
-
 func _on_click_pressed():
 	action_done()
 	pass # Replace with function body.
 
 
 func _on_shiny_enable_pressed():
-	if display_shiny:
-		match board:
-			"hills":
-				$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
-		display_shiny = false
-		$Pokedex/passhiny.show()
-		$Pokedex/shiny.hide()
-	else:
-		match board:
-			"hills":
-				$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_shinydex, true)
-		display_shiny = true
-		$Pokedex/passhiny.hide()
-		$Pokedex/shiny.show()
+	$Pokedex/passhiny.set_disabled(true)
+	$Pokedex/shiny.set_disabled(false)
+	display_shiny = false
+	$Pokedex/Stats.hide()
+	$Pokedex/ScrollContainer.show()
+	match board:
+		"hills":
+			$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
 	pass # Replace with function body.
 
 
@@ -493,4 +483,24 @@ func _on_close_settings_pressed():
 
 func _on_settings_button_pressed():
 	$Settings.show()
+	pass # Replace with function body.
+
+
+func _on_stat_button_pressed():
+	$Pokedex/ScrollContainer.hide()
+	$Pokedex/Stats.show()
+	$Pokedex/passhiny.set_disabled(false)
+	$Pokedex/shiny.set_disabled(false)
+	pass # Replace with function body.
+
+
+func _on_shiny_pressed():
+	display_shiny = true
+	$Pokedex/Stats.hide()
+	$Pokedex/ScrollContainer.show()
+	$Pokedex/passhiny.set_disabled(false)
+	$Pokedex/shiny.set_disabled(true)
+	match board:
+			"hills":
+				$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_shinydex, true)
 	pass # Replace with function body.

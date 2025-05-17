@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbvc433e5hrqd"
-path="res://.godot/imported/stats_hover.png-48dc48d2644352cb315ef02f39da128c.ctex"
+uid="uid://50n36vfyajpa"
+path="res://.godot/imported/passhiny_disable.png-738d6f34ce6da879881b9fda2b375ac1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/stats_hover.png"
-dest_files=["res://.godot/imported/stats_hover.png-48dc48d2644352cb315ef02f39da128c.ctex"]
+source_file="res://Sprite/passhiny_disable.png"
+dest_files=["res://.godot/imported/passhiny_disable.png-738d6f34ce6da879881b9fda2b375ac1.ctex"]
 
 [params]
 
