@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://da6d6unxurmtx"]
+[gd_scene load_steps=46 format=3 uid="uid://da6d6unxurmtx"]
 
 [ext_resource type="Script" path="res://PachinkoGame.gd" id="1_hvfcm"]
 [ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://ball.tscn" id="2_aubgf"]
@@ -14,14 +14,17 @@
 [ext_resource type="AudioStream" uid="uid://rcuw26ewoav2" path="res://Sounds/showtime_undertale.ogg" id="15_m2yg6"]
 [ext_resource type="Texture2D" uid="uid://cdp7ufw0rcj88" path="res://Sprite/pokedex_hover.png" id="15_sqsr2"]
 [ext_resource type="FontFile" uid="uid://rw0divhmlh6r" path="res://Sprite/m5x7.ttf" id="16_k1mt0"]
+[ext_resource type="Texture2D" uid="uid://50n36vfyajpa" path="res://Sprite/passhiny_disable.png" id="17_iku5n"]
 [ext_resource type="Script" path="res://PokedexDisplay.gd" id="17_y5neg"]
 [ext_resource type="Texture2D" uid="uid://duw5x5ggbpy5" path="res://Sprite/close.png" id="18_akpa7"]
 [ext_resource type="AudioStream" uid="uid://bfdygkjq7sr6c" path="res://Sounds/new_ball.ogg" id="19_7sijj"]
 [ext_resource type="Texture2D" uid="uid://c8n5ds1r88tif" path="res://Sprite/close_pressed.png" id="19_u00ih"]
+[ext_resource type="Texture2D" uid="uid://cefodiilvipf5" path="res://Sprite/stats_button.png" id="20_4u7n8"]
 [ext_resource type="Texture2D" uid="uid://c0dtpct1im6a5" path="res://Sprite/close_hover.png" id="20_doqxe"]
 [ext_resource type="AudioStream" uid="uid://c4ieut7msoaqa" path="res://Sounds/launch_ball.ogg" id="20_neuii"]
+[ext_resource type="Texture2D" uid="uid://cuwkhi1866rlv" path="res://Sprite/passhiny_hover.png" id="20_v4aqd"]
+[ext_resource type="Texture2D" uid="uid://uw67s87b23fa" path="res://Sprite/stats_button_pressed.png" id="21_2qnb5"]
 [ext_resource type="Texture2D" uid="uid://4j881kkfma65" path="res://Sprite/passhiny.png" id="26_jhsbo"]
-[ext_resource type="Texture2D" uid="uid://cuwkhi1866rlv" path="res://Sprite/passhiny_hover.png" id="28_4im2k"]
 [ext_resource type="Texture2D" uid="uid://8qi6ff4u8mg5" path="res://Sprite/shiny.png" id="29_x2ici"]
 [ext_resource type="Texture2D" uid="uid://0k0w7typ01uu" path="res://Sprite/shiny_hover.png" id="31_2wf0t"]
 
@@ -685,7 +688,6 @@ libraries = {
 }
 
 [node name="HUD2" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 254.0
@@ -743,8 +745,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.658824)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Pokedex"]
-visible = false
+[node name="Stats" type="HBoxContainer" parent="Pokedex"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -752,10 +753,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pokedex/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pokedex/Stats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Pokedex/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Pokedex/Stats/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -778,8 +779,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -109.0
-offset_right = 109.0
+offset_left = -128.0
+offset_top = -94.0
+offset_right = 90.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_to0a8")
@@ -792,7 +795,7 @@ columns = 3
 script = ExtResource("17_y5neg")
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="TextureButton" parent="Pokedex"]
+[node name="Close button" type="TextureButton" parent="Pokedex"]
 layout_mode = 0
 offset_left = 239.0
 offset_top = 2.0
@@ -809,18 +812,29 @@ offset_top = 20.0
 offset_right = 255.0
 offset_bottom = 36.0
 texture_normal = ExtResource("26_jhsbo")
-texture_pressed = ExtResource("31_2wf0t")
-texture_hover = ExtResource("28_4im2k")
+texture_pressed = ExtResource("26_jhsbo")
+texture_hover = ExtResource("26_jhsbo")
+texture_disabled = ExtResource("17_iku5n")
 
 [node name="shiny" type="TextureButton" parent="Pokedex"]
 layout_mode = 0
-offset_left = 239.0
+offset_left = 221.0
 offset_top = 20.0
-offset_right = 255.0
+offset_right = 237.0
 offset_bottom = 36.0
 texture_normal = ExtResource("29_x2ici")
-texture_pressed = ExtResource("28_4im2k")
+texture_pressed = ExtResource("29_x2ici")
 texture_hover = ExtResource("31_2wf0t")
+texture_disabled = ExtResource("20_v4aqd")
+
+[node name="Stat button" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 38.0
+offset_right = 255.0
+offset_bottom = 54.0
+texture_normal = ExtResource("20_4u7n8")
+texture_pressed = ExtResource("21_2qnb5")
 
 [node name="Settings" type="Control" parent="."]
 visible = false
@@ -951,7 +965,8 @@ bus = &"SFX"
 [connection signal="pressed" from="HUD2/Click" to="." method="_on_click_pressed"]
 [connection signal="pressed" from="HUD2/TextureRect" to="." method="_on_texture_rect_pressed"]
 [connection signal="pressed" from="HUD2/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Pokedex/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pokedex/Close button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pokedex/passhiny" to="." method="_on_shiny_enable_pressed"]
-[connection signal="pressed" from="Pokedex/shiny" to="." method="_on_shiny_enable_pressed"]
+[connection signal="pressed" from="Pokedex/shiny" to="." method="_on_shiny_pressed"]
+[connection signal="pressed" from="Pokedex/Stat button" to="." method="_on_stat_button_pressed"]
 [connection signal="pressed" from="Settings/CloseSettings" to="." method="_on_close_settings_pressed"]
