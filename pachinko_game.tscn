@@ -913,6 +913,7 @@ max_value = 0.0
 step = 0.0
 
 [node name="CloseSettings" type="TextureButton" parent="Settings"]
+layout_mode = 0
 offset_left = 239.0
 offset_top = 2.0
 offset_right = 255.0

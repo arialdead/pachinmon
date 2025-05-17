@@ -105,6 +105,8 @@ var whole_hills_pokedex = {
 		}
 
 func _ready():
+	print("Je fais une roulette ! C'est super :>")
+	
 	#Prelaunch Animations
 	$ColorRect/RarityLabel/AnimationPlayer.play("loop")
 	$ColorRect/NewLabel/AnimationPlayer.play("Scaling")
