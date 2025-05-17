@@ -186,8 +186,8 @@ func _ready():
 					save.last_version = 1.2
 		
 		$Settings/SettingsWindows/Options/Option2/MasterSlider.value = save.settings.master_volume
-		$Settings/SettingsWindows/Options/Option2/SFXSlider.value = save.settings.bgm_volume
-		$Settings/SettingsWindows/Options/Option2/BGMSlider.value = save.settings.bgmvolume
+		$Settings/SettingsWindows/Options/Option2/SFXSlider.value = save.settings.sfx_volume
+		$Settings/SettingsWindows/Options/Option2/BGMSlider.value = save.settings.bgm_volume
 		
 		var time = Time.get_datetime_dict_from_system()
 		var old_time = save.last_time_got_ball
