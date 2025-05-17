@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://dl8r2gqn8tr7p" path="res://Sprite/Pokemons/PokemonSprites.tres" id="1_r6nnr"]
 [ext_resource type="Script" path="res://pokemon_template.gd" id="1_w8hms"]
-[ext_resource type="Theme" uid="uid://dqq47la0p72wd" path="res://Theme/Common.tres" id="2_3rvyc"]
+[ext_resource type="Theme" uid="uid://bnnsc77pdhuqn" path="res://Theme/UltraRare.tres" id="2_8wtt7"]
 [ext_resource type="FontFile" uid="uid://bwch0wkd7shoh" path="res://Sprite/zxSpectrumStrictCondensed.ttf" id="2_vnlyj"]
 
 [node name="PokemonTemplate" type="Control"]
@@ -25,12 +25,12 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_3rvyc")
+theme = ExtResource("2_8wtt7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PokemonContainer"]
 position = Vector2(32, 32)
 sprite_frames = ExtResource("1_r6nnr")
-animation = &"10034"
+animation = &"10033s"
 
 [node name="Label" type="Label" parent="PokemonContainer"]
 layout_mode = 1

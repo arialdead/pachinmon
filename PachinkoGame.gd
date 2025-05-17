@@ -239,6 +239,7 @@ func _ready():
 	pokeball_catching= current_board.pokeball_catching
 	pokeleds = current_board.pokeleds
 	pokeled_animator = current_board.pokeled_animator
+
 func generate_hills_pokedex():
 	var hills_pokedex = {}
 	for rarity in whole_hills_pokedex:
