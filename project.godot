@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Pachinmon"
-run/main_scene="res://pachinko_game.tscn"
+run/main_scene="res://Scenes/pachinko_game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://GodotBase/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://GodotBase/default_bus_layout.tres"
 
 [display]
 
