@@ -8,6 +8,11 @@ const HILLS = preload("res://Boards/hills.tscn")
 
 #Déclaration des variables essentiels ⚠️ A verifier lesquels sont vrmt essentiels
 var balls_remaining = 500
+var ball_count = 0
+var pokedex_completion = 0
+var time_spent = 0
+var saved_time = 0
+var shiny_completion = 0
 var pokeball_counter = 0
 var balls = []
 var can_play=true
@@ -15,6 +20,7 @@ var can_continue=true
 var save
 var board = "hills"
 var display_shiny = false
+var current_time = Time.get_unix_time_from_system()
 
 #Déclaration de variable que c'est chiant a retrouver
 @onready var catch_animator = $ColorRect/AnimationPlayer
@@ -105,7 +111,7 @@ var whole_hills_pokedex = {
 		}
 
 func _ready():
-	
+
 	#Prelaunch Animations
 	$ColorRect/RarityLabel/AnimationPlayer.play("loop")
 	$ColorRect/NewLabel/AnimationPlayer.play("Scaling")
@@ -117,6 +123,10 @@ func _ready():
 		save = {
 			"last_time_got_ball" : Time.get_datetime_dict_from_system(),
 			"balls" : 500,
+			"ball_count" : 0,
+			"pokedex_completion" : 0,
+			"shiny_completion" : 0,
+			"time_spent" : 0,
 			"hills_pokedex" : hills_pokedex,
 			"hills_shinydex" : hills_shinydex,
 			"pokeball_counter" : 0,
@@ -135,6 +145,7 @@ func _ready():
 		
 		var file = FileAccess.open("user://save.save", FileAccess.READ)
 		save = file.get_var()
+		print(save)
 		
 		#upgrade from 1.0 to 1.1
 		if not save.keys().has("last_version"):
@@ -163,6 +174,10 @@ func _ready():
 			var new_save = {
 				"last_time_got_ball" : save.last_time_got_ball,
 				"balls" : save.balls,
+				"ball_count" : save.ball_count,
+				"pokedex_completion" : save.pokedex_completion,
+				"shiny_completion" : save.shiny_completion,
+				"time_spent" : save.time_spent,
 				"hills_pokedex" : hills_pokedex,
 				"hills_shinydex" : shinydex,
 				"pokeball_counter" : save.pokeball_counter,
@@ -171,6 +186,7 @@ func _ready():
 			}
 			save = new_save.duplicate()
 		pokeball_counter = save.pokeball_counter
+		
 		
 		#Tant que la version n'est pas a jour, update petit a petit
 		while save.last_version != current_version:
@@ -209,6 +225,12 @@ func _ready():
 		if temp_balls > 500:
 			temp_balls = 500
 		
+		#load last stats
+		ball_count = save.ball_count
+		pokedex_completion = save.pokedex_completion
+		shiny_completion = save.shiny_completion
+		time_spent = save.time_spent
+		saved_time = save.time_spent
 		
 		#add balls
 		balls_remaining = save.balls + temp_balls
@@ -266,6 +288,7 @@ func action_done():
 	if can_continue and can_play:
 		if balls_remaining > 0:
 			spawn_ball()
+			
 	elif can_continue and not can_play:
 		catch_animator.play("Closing")
 		$ColorRect/Label3/AnimationTree.pause()
@@ -285,12 +308,17 @@ func spawn_ball():
 		balls_remaining -= 1
 		$SoundPlayer/sfx_ball_launched.play()
 		save.balls = balls_remaining
+		ball_count += 1
 		save_file()
 		balls.append(ball)
 
 func save_file():
 	var file = FileAccess.open("user://save.save",FileAccess.WRITE)
 	save.balls_remaining = balls_remaining
+	save.ball_count = ball_count
+	save.time_spent = time_spent
+	save.pokedex_completion = pokedex_completion
+	save.shiny_completion = shiny_completion
 	var temp_settings = {
 		"master_volume" : $Settings/SettingsWindows/Options/Option2/MasterSlider.value,
 		"sfx_volume" : $Settings/SettingsWindows/Options/Option2/SFXSlider.value,
@@ -406,6 +434,19 @@ func get_rarity():
 		return "UR"
 	else:
 		return "MR"
+		
+func update_time():
+	# Mise à jour du temps de jeu
+	time_spent = Time.get_unix_time_from_system() - current_time + saved_time
+	save_file()
+
+func _format_seconds_to_hhmmss(seconds):
+	var total_seconds = int(seconds)
+	var hours = total_seconds / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var secs = total_seconds % 60
+
+	return "%02d:%02d:%02d" % [hours, minutes, secs]
 
 func _on_out_zone_body_entered(body):
 	balls.erase(body)
@@ -420,7 +461,7 @@ func _on_new_ball_body_entered(body):
 	save.balls = balls_remaining
 	save_file()
 	pass # Replace with function body.
-	
+
 func _on_pokeball_body_entered(body):
 	if body != pokeball_catching:
 		print("le body est bon")
@@ -452,7 +493,7 @@ func _on_button_pressed():
 
 func _on_texture_rect_pressed():
 	$Pokedex/passhiny.show()
-	$Pokedex/shiny.hide()
+	$Pokedex/shiny.show()
 	match board:
 		"hills":
 			$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
@@ -467,6 +508,7 @@ func _on_click_pressed():
 func _on_shiny_enable_pressed():
 	$Pokedex/passhiny.set_disabled(true)
 	$Pokedex/shiny.set_disabled(false)
+	$"Pokedex/Stat button".set_disabled(false)
 	display_shiny = false
 	$Pokedex/Stats.hide()
 	$Pokedex/ScrollContainer.show()
@@ -489,8 +531,11 @@ func _on_settings_button_pressed():
 func _on_stat_button_pressed():
 	$Pokedex/ScrollContainer.hide()
 	$Pokedex/Stats.show()
+	$"Pokedex/Stat button".set_disabled(true)
 	$Pokedex/passhiny.set_disabled(false)
 	$Pokedex/shiny.set_disabled(false)
+	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))
+	update_time()
 	pass # Replace with function body.
 
 
@@ -499,6 +544,7 @@ func _on_shiny_pressed():
 	$Pokedex/Stats.hide()
 	$Pokedex/ScrollContainer.show()
 	$Pokedex/passhiny.set_disabled(false)
+	$"Pokedex/Stat button".set_disabled(false)
 	$Pokedex/shiny.set_disabled(true)
 	match board:
 			"hills":
