@@ -1,0 +1,980 @@
+[gd_scene load_steps=49 format=3 uid="uid://da6d6unxurmtx"]
+
+[ext_resource type="Script" path="res://Scripts/PachinkoGame.gd" id="1_hvfcm"]
+[ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://Scenes/ball.tscn" id="2_aubgf"]
+[ext_resource type="Texture2D" uid="uid://ch0s4r0bbqdbt" path="res://Sprite/Game Elements/round.png" id="9_bapph"]
+[ext_resource type="FontFile" uid="uid://b20r41ml8qt5c" path="res://Fonts/GrapeSoda.ttf" id="9_xl7ru"]
+[ext_resource type="Script" path="res://Scripts/Sprite2D.gd" id="10_eysfm"]
+[ext_resource type="Texture2D" uid="uid://px1cm1g4icwf" path="res://Sprite/HUD/settings.png" id="10_onton"]
+[ext_resource type="Texture2D" uid="uid://xiyc8o3qqv2c" path="res://Sprite/HUD/settings_pressing.png" id="11_g2di1"]
+[ext_resource type="Texture2D" uid="uid://dt3t2dpppvpm3" path="res://Sprite/HUD/settings_hover.png" id="11_q6xbs"]
+[ext_resource type="SpriteFrames" uid="uid://dl8r2gqn8tr7p" path="res://Sprite/Pokemons/PokemonSprites.tres" id="12_rw5n3"]
+[ext_resource type="AudioStream" uid="uid://0gj786sjg0nx" path="res://Sounds/pokeball.ogg" id="13_0tekp"]
+[ext_resource type="Texture2D" uid="uid://dtom0f2m5sg2i" path="res://Sprite/HUD/pokedex.png" id="13_xhgqe"]
+[ext_resource type="AudioStream" uid="uid://b3pl42leidi8x" path="res://Sounds/catching.ogg" id="14_3je88"]
+[ext_resource type="Texture2D" uid="uid://uk00mvl0mpp1" path="res://Sprite/HUD/pokedex_pressed.png" id="14_52y2f"]
+[ext_resource type="PackedScene" uid="uid://ior8ibenns5y" path="res://Scenes/pokemon_template.tscn" id="15_3fld7"]
+[ext_resource type="AudioStream" uid="uid://rcuw26ewoav2" path="res://Sounds/showtime_undertale.ogg" id="15_m2yg6"]
+[ext_resource type="Texture2D" uid="uid://cdp7ufw0rcj88" path="res://Sprite/HUD/pokedex_hover.png" id="15_sqsr2"]
+[ext_resource type="FontFile" uid="uid://rw0divhmlh6r" path="res://Fonts/m5x7.ttf" id="16_k1mt0"]
+[ext_resource type="Texture2D" uid="uid://50n36vfyajpa" path="res://Sprite/HUD/passhiny_disable.png" id="17_iku5n"]
+[ext_resource type="Script" path="res://Scripts/PokedexDisplay.gd" id="17_y5neg"]
+[ext_resource type="Texture2D" uid="uid://duw5x5ggbpy5" path="res://Sprite/HUD/close.png" id="18_akpa7"]
+[ext_resource type="AudioStream" uid="uid://bfdygkjq7sr6c" path="res://Sounds/new_ball.ogg" id="19_7sijj"]
+[ext_resource type="Texture2D" uid="uid://c8n5ds1r88tif" path="res://Sprite/HUD/close_pressed.png" id="19_u00ih"]
+[ext_resource type="Texture2D" uid="uid://cefodiilvipf5" path="res://Sprite/HUD/stats_button.png" id="20_4u7n8"]
+[ext_resource type="Texture2D" uid="uid://c0dtpct1im6a5" path="res://Sprite/HUD/close_hover.png" id="20_doqxe"]
+[ext_resource type="AudioStream" uid="uid://c4ieut7msoaqa" path="res://Sounds/launch_ball.ogg" id="20_neuii"]
+[ext_resource type="Texture2D" uid="uid://cuwkhi1866rlv" path="res://Sprite/HUD/passhiny_hover.png" id="20_v4aqd"]
+[ext_resource type="Texture2D" uid="uid://uw67s87b23fa" path="res://Sprite/HUD/stats_button_pressed.png" id="21_2qnb5"]
+[ext_resource type="Texture2D" uid="uid://4j881kkfma65" path="res://Sprite/HUD/passhiny.png" id="26_jhsbo"]
+[ext_resource type="Texture2D" uid="uid://8qi6ff4u8mg5" path="res://Sprite/HUD/shiny.png" id="29_x2ici"]
+[ext_resource type="Texture2D" uid="uid://0k0w7typ01uu" path="res://Sprite/HUD/shiny_hover.png" id="31_2wf0t"]
+
+[sub_resource type="Animation" id="Animation_uaggq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uv1ut"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.435275, 2.21914, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmc6"]
+_data = {
+"RESET": SubResource("Animation_uaggq"),
+"new_animation": SubResource("Animation_uv1ut")
+}
+
+[sub_resource type="Animation" id="Animation_4g5rv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iuat4"]
+resource_name = "Scaling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7pmo"]
+_data = {
+"RESET": SubResource("Animation_4g5rv"),
+"Scaling": SubResource("Animation_iuat4")
+}
+
+[sub_resource type="Animation" id="Animation_ne3yu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sryhs"]
+resource_name = "loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.406126, 1.62451, 1),
+"update": 0,
+"values": [Vector2(0.835, 0.835), Vector2(1, 1), Vector2(0.835, 0.835)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2aj1k"]
+_data = {
+"RESET": SubResource("Animation_ne3yu"),
+"loop": SubResource("Animation_sryhs")
+}
+
+[sub_resource type="Animation" id="Animation_q27cg"]
+resource_name = "Closing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundPlayer/bgm_showtime:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.82843, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_1fi03"]
+resource_name = "Pokemon"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 628), Vector2(985, 627), Vector2(985, 627), Vector2(985, 667), Vector2(985, 667)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.9, 3.2, 4),
+"transitions": PackedFloat32Array(0.105112, 2.73208, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(3, 3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/AnimatedSprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.2, 4),
+"transitions": PackedFloat32Array(25.1067, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect/Label2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 4.5),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.2, 4),
+"transitions": PackedFloat32Array(1.46409, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2.11, 2.11), Vector2(6.695, 6.695)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SoundPlayer/bgm_showtime:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SoundPlayer/bgm_showtime:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4, 4.5),
+"transitions": PackedFloat32Array(1, 0.00224357, 0.25),
+"update": 0,
+"values": [-75.0, -75.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect/RarityLabel:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4uah8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1549, 628)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/AnimatedSprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect/Label2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SoundPlayer/bgm_showtime:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SoundPlayer/bgm_showtime:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect/RarityLabel:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwtlu"]
+_data = {
+"Closing": SubResource("Animation_q27cg"),
+"Pokemon": SubResource("Animation_1fi03"),
+"RESET": SubResource("Animation_4uah8")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu540"]
+bg_color = Color(0, 0, 0, 0.666667)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wak41"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8br75"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4javf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_to0a8"]
+Panel/styles/panel = SubResource("StyleBoxFlat_yu540")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wak41")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_8br75")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_4javf")
+
+[node name="PachinkoGame" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_hvfcm")
+ball_scene = ExtResource("2_aubgf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Round" type="Sprite2D" parent="ColorRect"]
+position = Vector2(1088, 635)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_bapph")
+script = ExtResource("10_eysfm")
+
+[node name="Label" type="Label" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1549.0
+offset_top = 628.0
+offset_right = 1768.0
+offset_bottom = 651.0
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "A WILD POKEMON APPEARS !"
+
+[node name="Label2" type="Label" parent="ColorRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 148.0
+offset_right = 244.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "ITS PLACEHOLDER !"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 159.0
+offset_right = 244.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56, 0.56)
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "Press to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationTree" type="AnimationPlayer" parent="ColorRect/Label3"]
+libraries = {
+"": SubResource("AnimationLibrary_4nmc6")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1088, 626)
+scale = Vector2(1e-05, 1e-05)
+sprite_frames = ExtResource("12_rw5n3")
+animation = &"784"
+
+[node name="NewLabel" type="Label" parent="ColorRect"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = 36.0
+offset_right = 297.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "NEW !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/NewLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_v7pmo")
+}
+
+[node name="RarityLabel" type="Label" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = 41.0
+offset_right = 193.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.523598
+pivot_offset = Vector2(109.5, 11.5)
+theme_override_fonts/font = ExtResource("9_xl7ru")
+theme_override_font_sizes/font_size = 19
+text = "SuperSuperRare !!! (6%)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/RarityLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_2aj1k")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_gwtlu")
+}
+
+[node name="HUD2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 254.0
+offset_bottom = 192.0
+
+[node name="Click" type="Button" parent="HUD2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="Label" type="Label" parent="HUD2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 178.0
+offset_right = 113.0
+offset_bottom = 201.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("9_xl7ru")
+text = "next ball in : 20m"
+
+[node name="TextureRect" type="TextureButton" parent="HUD2"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 172.0
+offset_right = 254.0
+offset_bottom = 190.0
+texture_normal = ExtResource("13_xhgqe")
+texture_pressed = ExtResource("14_52y2f")
+texture_hover = ExtResource("15_sqsr2")
+
+[node name="SettingsButton" type="TextureButton" parent="HUD2"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 172.0
+offset_right = 234.0
+offset_bottom = 190.0
+texture_normal = ExtResource("10_onton")
+texture_pressed = ExtResource("11_g2di1")
+texture_hover = ExtResource("11_q6xbs")
+
+[node name="Pokedex" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="Pokedex"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.658824)
+
+[node name="Stats" type="HBoxContainer" parent="Pokedex"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pokedex/Stats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Pokedex/Stats/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("16_k1mt0")
+theme_override_font_sizes/font_size = 16
+text = "Common : 100%
+Uncommon : 100%
+Rare : 100%
+SuperRare : 100%
+SuperSuperRare : 100%
+UltraRare : 100%
+MegaRare : 100%"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Pokedex"]
+visible = false
+custom_minimum_size = Vector2(218, 188)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -94.0
+offset_right = 92.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_to0a8")
+
+[node name="PokedexDisplay" type="GridContainer" parent="Pokedex/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+script = ExtResource("17_y5neg")
+res_pokemon_template = ExtResource("15_3fld7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Close button" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 2.0
+offset_right = 255.0
+offset_bottom = 18.0
+texture_normal = ExtResource("18_akpa7")
+texture_pressed = ExtResource("19_u00ih")
+texture_hover = ExtResource("20_doqxe")
+
+[node name="passhiny" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 20.0
+offset_right = 255.0
+offset_bottom = 36.0
+texture_normal = ExtResource("26_jhsbo")
+texture_pressed = ExtResource("26_jhsbo")
+texture_hover = ExtResource("26_jhsbo")
+texture_disabled = ExtResource("17_iku5n")
+
+[node name="shiny" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 20.0
+offset_right = 237.0
+offset_bottom = 36.0
+texture_normal = ExtResource("29_x2ici")
+texture_pressed = ExtResource("29_x2ici")
+texture_hover = ExtResource("31_2wf0t")
+texture_disabled = ExtResource("20_v4aqd")
+
+[node name="Stat button" type="TextureButton" parent="Pokedex"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 38.0
+offset_right = 255.0
+offset_bottom = 54.0
+texture_normal = ExtResource("20_4u7n8")
+texture_pressed = ExtResource("21_2qnb5")
+texture_disabled = ExtResource("21_2qnb5")
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="SettingsBackground" type="ColorRect" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.811765)
+
+[node name="SettingsWindows" type="Panel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -62.0
+offset_right = 113.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="HBoxContainer" parent="Settings/SettingsWindows"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Option1" type="VBoxContainer" parent="Settings/SettingsWindows/Options"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MasterLabel" type="Label" parent="Settings/SettingsWindows/Options/Option1"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="SFXLabel" type="Label" parent="Settings/SettingsWindows/Options/Option1"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX"
+
+[node name="BGMLabel" type="Label" parent="Settings/SettingsWindows/Options/Option1"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "BGM"
+
+[node name="Option2" type="VBoxContainer" parent="Settings/SettingsWindows/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterSlider" type="HSlider" parent="Settings/SettingsWindows/Options/Option2"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="SFXSlider" type="HSlider" parent="Settings/SettingsWindows/Options/Option2"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="BGMSlider" type="HSlider" parent="Settings/SettingsWindows/Options/Option2"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="CloseSettings" type="TextureButton" parent="Settings"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 2.0
+offset_right = 255.0
+offset_bottom = 18.0
+texture_normal = ExtResource("18_akpa7")
+texture_pressed = ExtResource("19_u00ih")
+texture_hover = ExtResource("20_doqxe")
+
+[node name="SoundPlayer" type="Node" parent="."]
+
+[node name="sfx_pokeball" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("13_0tekp")
+volume_db = -17.801
+bus = &"SFX"
+
+[node name="sfx_catching" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("14_3je88")
+bus = &"SFX"
+
+[node name="bgm_showtime" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("15_m2yg6")
+volume_db = -80.0
+bus = &"BGM"
+
+[node name="sfx_new_ball" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("19_7sijj")
+bus = &"SFX"
+
+[node name="sfx_ball_launched" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("20_neuii")
+volume_db = -17.802
+bus = &"SFX"
+
+[connection signal="pressed" from="HUD2/Click" to="." method="_on_click_pressed"]
+[connection signal="pressed" from="HUD2/TextureRect" to="." method="_on_texture_rect_pressed"]
+[connection signal="pressed" from="HUD2/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Pokedex/Close button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pokedex/passhiny" to="." method="_on_shiny_enable_pressed"]
+[connection signal="pressed" from="Pokedex/shiny" to="." method="_on_shiny_pressed"]
+[connection signal="pressed" from="Pokedex/Stat button" to="." method="_on_stat_button_pressed"]
+[connection signal="pressed" from="Settings/CloseSettings" to="." method="_on_close_settings_pressed"]

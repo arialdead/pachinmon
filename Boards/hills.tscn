@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=3 uid="uid://lau8trhpxpax"]
 
-[ext_resource type="Texture2D" uid="uid://w5r5d12gr57p" path="res://Sprite/Layout2.png" id="1_1x27i"]
 [ext_resource type="Script" path="res://Boards/hills.gd" id="1_457t7"]
-[ext_resource type="Texture2D" uid="uid://bw2rpvfdoqvo7" path="res://Sprite/Pokeled.png" id="2_g28ng"]
-[ext_resource type="Texture2D" uid="uid://cjg1tddguqmhe" path="res://Sprite/Controller.png" id="3_n8jfs"]
-[ext_resource type="Script" path="res://AnimationPlayer.gd" id="4_hiwt4"]
-[ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Pokéball.png" id="5_dlit3"]
-[ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://pin.tscn" id="6_c20yh"]
+[ext_resource type="Texture2D" uid="uid://w5r5d12gr57p" path="res://Sprite/Game Elements/Hills Background.png" id="2_w5kcc"]
+[ext_resource type="Texture2D" uid="uid://bw2rpvfdoqvo7" path="res://Sprite/Game Elements/Pokeled.png" id="3_hs1v0"]
+[ext_resource type="Texture2D" uid="uid://cjg1tddguqmhe" path="res://Sprite/Game Elements/Controller.png" id="4_j62qg"]
+[ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="5_c6v51"]
+[ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Game Elements/Pokéball.png" id="6_boxe2"]
+[ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://Scenes/pin.tscn" id="7_rc2so"]
 
 [sub_resource type="Animation" id="Animation_rntxr"]
 resource_name = "Pokemon"
@@ -263,7 +263,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_1x27i")
+texture = ExtResource("2_w5kcc")
 
 [node name="Pokeleds" type="Node2D" parent="."]
 position = Vector2(128, 87)
@@ -271,26 +271,26 @@ position = Vector2(128, 87)
 [node name="Pokeled1" type="Sprite2D" parent="Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(-12, 0)
-texture = ExtResource("2_g28ng")
+texture = ExtResource("3_hs1v0")
 
 [node name="Pokeled2" type="Sprite2D" parent="Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(-6, 0)
-texture = ExtResource("2_g28ng")
+texture = ExtResource("3_hs1v0")
 
 [node name="Pokeled3" type="Sprite2D" parent="Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
-texture = ExtResource("2_g28ng")
+texture = ExtResource("3_hs1v0")
 
 [node name="Pokeled4" type="Sprite2D" parent="Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(6, 0)
-texture = ExtResource("2_g28ng")
+texture = ExtResource("3_hs1v0")
 
 [node name="Pokeled5" type="Sprite2D" parent="Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(12, 0)
-texture = ExtResource("2_g28ng")
+texture = ExtResource("3_hs1v0")
 
 [node name="PokeledAnimator" type="AnimationPlayer" parent="Pokeleds"]
 libraries = {
@@ -304,13 +304,13 @@ position = Vector2(92, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="BallEmiter"]
 position = Vector2(0, -7)
-texture = ExtResource("3_n8jfs")
+texture = ExtResource("4_j62qg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BallEmiter"]
 libraries = {
 "": SubResource("AnimationLibrary_c1het")
 }
-script = ExtResource("4_hiwt4")
+script = ExtResource("5_c6v51")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 position = Vector2(71, 100)
@@ -388,7 +388,7 @@ initial_velocity_max = 40.0
 color_ramp = SubResource("Gradient_nlc4g")
 
 [node name="Sprite2D" type="Sprite2D" parent="PokeballCatching"]
-texture = ExtResource("5_dlit3")
+texture = ExtResource("6_boxe2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PokeballCatching"]
 libraries = {
@@ -397,220 +397,220 @@ libraries = {
 
 [node name="PinContainer" type="Node2D" parent="."]
 
-[node name="Pin" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin" parent="PinContainer" instance=ExtResource("7_rc2so")]
 
-[node name="Pin2" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin2" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(138, 28)
 
-[node name="Pin3" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin3" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(118, 28)
 
-[node name="Pin70" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin70" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(122, 22)
 
-[node name="Pin71" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin71" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(134, 22)
 
-[node name="Pin4" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin4" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(111, 39)
 
-[node name="Pin5" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin5" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(102, 51)
 
-[node name="Pin72" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin72" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(109, 58)
 
-[node name="Pin73" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin73" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(147, 58)
 
-[node name="Pin6" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin6" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(92, 56)
 
-[node name="Pin7" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin7" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(85, 48)
 
-[node name="Pin8" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin8" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(80, 45)
 
-[node name="Pin9" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin9" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(76, 42)
 
-[node name="Pin10" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin10" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(82, 57)
 
-[node name="Pin11" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin11" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(76, 63)
 
-[node name="Pin12" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin12" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(73, 67)
 
-[node name="Pin13" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin13" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(80, 76)
 
-[node name="Pin14" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin14" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(99, 70)
 
-[node name="Pin15" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin15" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(104, 74)
 
-[node name="Pin16" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin16" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(109, 79)
 
-[node name="Pin17" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin17" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(98, 86)
 
-[node name="Pin18" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin18" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(89, 90)
 
-[node name="Pin19" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin19" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 95)
 
-[node name="Pin20" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin20" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(121, 101)
 
-[node name="Pin21" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin21" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 106)
 
-[node name="Pin22" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin22" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 111)
 
-[node name="Pin23" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin23" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(135, 101)
 
-[node name="Pin24" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin24" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 106)
 
-[node name="Pin25" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin25" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 93)
 
-[node name="Pin26" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin26" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 95)
 
-[node name="Pin27" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin27" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(147, 79)
 
-[node name="Pin28" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin28" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(158, 86)
 
-[node name="Pin29" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin29" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(167, 90)
 
-[node name="Pin30" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin30" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(176, 76)
 
-[node name="Pin31" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin31" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(157, 70)
 
-[node name="Pin32" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin32" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(152, 74)
 
-[node name="Pin33" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin33" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(137, 68)
 
-[node name="Pin34" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin34" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 64)
 
-[node name="Pin35" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin35" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(119, 68)
 
-[node name="Pin36" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin36" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(164, 56)
 
-[node name="Pin37" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin37" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(174, 57)
 
-[node name="Pin38" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin38" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(180, 63)
 
-[node name="Pin39" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin39" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(183, 67)
 
-[node name="Pin40" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin40" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(154, 51)
 
-[node name="Pin41" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin41" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(145, 39)
 
-[node name="Pin42" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin42" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(171, 48)
 
-[node name="Pin43" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin43" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(176, 45)
 
-[node name="Pin44" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin44" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(180, 42)
 
-[node name="Pin45" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin45" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 117)
 
-[node name="Pin46" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin46" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(141, 122)
 
-[node name="Pin47" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin47" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(115, 122)
 
-[node name="Pin48" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin48" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 117)
 
-[node name="Pin49" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin49" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 136)
 
-[node name="Pin50" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin50" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 140)
 
-[node name="Pin51" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin51" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 145)
 
-[node name="Pin52" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin52" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 140)
 
-[node name="Pin53" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin53" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 136)
 
-[node name="Pin54" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin54" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(168, 128)
 
-[node name="Pin55" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin55" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(171, 113)
 
-[node name="Pin56" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin56" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(184, 123)
 
-[node name="Pin57" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin57" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(181, 135)
 
-[node name="Pin58" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin58" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(161, 145)
 
-[node name="Pin59" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin59" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(141, 156)
 
-[node name="Pin60" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin60" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 162)
 
-[node name="Pin61" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin61" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(134, 166)
 
-[node name="Pin62" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin62" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(122, 166)
 
-[node name="Pin63" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin63" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 162)
 
-[node name="Pin64" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin64" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(115, 156)
 
-[node name="Pin65" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin65" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(95, 145)
 
-[node name="Pin66" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin66" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(75, 135)
 
-[node name="Pin67" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin67" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(88, 128)
 
-[node name="Pin68" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin68" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(72, 123)
 
-[node name="Pin69" parent="PinContainer" instance=ExtResource("6_c20yh")]
+[node name="Pin69" parent="PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(85, 119)
