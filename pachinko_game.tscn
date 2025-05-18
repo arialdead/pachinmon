@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://da6d6unxurmtx"]
+[gd_scene load_steps=48 format=3 uid="uid://da6d6unxurmtx"]
 
 [ext_resource type="Script" path="res://PachinkoGame.gd" id="1_hvfcm"]
 [ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://ball.tscn" id="2_aubgf"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://b20r41ml8qt5c" path="res://Sprite/GrapeSoda.ttf" id="9_xl7ru"]
 [ext_resource type="Script" path="res://Sprite2D.gd" id="10_eysfm"]
 [ext_resource type="Texture2D" uid="uid://px1cm1g4icwf" path="res://Sprite/settings.png" id="10_onton"]
+[ext_resource type="Texture2D" uid="uid://xiyc8o3qqv2c" path="res://Sprite/settings_pressing.png" id="11_g2di1"]
+[ext_resource type="Texture2D" uid="uid://dt3t2dpppvpm3" path="res://Sprite/settings_hover.png" id="11_q6xbs"]
 [ext_resource type="SpriteFrames" uid="uid://dl8r2gqn8tr7p" path="res://Sprite/Pokemons/PokemonSprites.tres" id="12_rw5n3"]
 [ext_resource type="AudioStream" uid="uid://0gj786sjg0nx" path="res://Sounds/pokeball.ogg" id="13_0tekp"]
 [ext_resource type="Texture2D" uid="uid://dtom0f2m5sg2i" path="res://Sprite/pokedex.png" id="13_xhgqe"]
@@ -727,8 +729,8 @@ offset_top = 172.0
 offset_right = 234.0
 offset_bottom = 190.0
 texture_normal = ExtResource("10_onton")
-texture_pressed = ExtResource("14_52y2f")
-texture_hover = ExtResource("15_sqsr2")
+texture_pressed = ExtResource("11_g2di1")
+texture_hover = ExtResource("11_q6xbs")
 
 [node name="Pokedex" type="Control" parent="."]
 layout_mode = 3
@@ -746,6 +748,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.658824)
 
 [node name="Stats" type="HBoxContainer" parent="Pokedex"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -772,6 +775,7 @@ UltraRare : 100%
 MegaRare : 100%"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Pokedex"]
+visible = false
 custom_minimum_size = Vector2(218, 188)
 layout_mode = 1
 anchors_preset = 8
@@ -779,9 +783,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
+offset_left = -126.0
 offset_top = -94.0
-offset_right = 90.0
+offset_right = 92.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -835,6 +839,7 @@ offset_right = 255.0
 offset_bottom = 54.0
 texture_normal = ExtResource("20_4u7n8")
 texture_pressed = ExtResource("21_2qnb5")
+texture_disabled = ExtResource("21_2qnb5")
 
 [node name="Settings" type="Control" parent="."]
 visible = false
