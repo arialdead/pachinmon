@@ -734,6 +734,7 @@ texture_pressed = ExtResource("11_g2di1")
 texture_hover = ExtResource("11_q6xbs")
 
 [node name="Pokedex" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
@@ -749,7 +750,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.658824)
 
 [node name="Stats" type="HBoxContainer" parent="Pokedex"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -776,7 +776,6 @@ UltraRare : 100%
 MegaRare : 100%"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Pokedex"]
-visible = false
 custom_minimum_size = Vector2(218, 188)
 layout_mode = 1
 anchors_preset = 8
