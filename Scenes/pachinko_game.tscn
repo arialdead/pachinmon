@@ -734,7 +734,6 @@ texture_pressed = ExtResource("11_g2di1")
 texture_hover = ExtResource("11_q6xbs")
 
 [node name="Pokedex" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0

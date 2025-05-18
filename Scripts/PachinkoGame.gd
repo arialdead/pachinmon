@@ -472,7 +472,6 @@ func _on_new_ball_body_entered(body):
 
 func _on_pokeball_body_entered(body):
 	if body != pokeball_catching:
-		print("le body est bon")
 		if body is RigidBody2D:
 			var direction = (body.global_position - global_position).normalized()
 			var force = direction * 400.0  # 💥 adapte cette valeur selon le punch souhaité
