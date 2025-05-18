@@ -145,7 +145,6 @@ func _ready():
 		
 		var file = FileAccess.open("user://save.save", FileAccess.READ)
 		save = file.get_var()
-		print(save)
 		
 		#upgrade from 1.0 to 1.1
 		if not save.keys().has("last_version"):
@@ -214,7 +213,7 @@ func _ready():
 		
 		var time = Time.get_datetime_dict_from_system()
 		var old_time = save.last_time_got_ball
-		#calculate time dif
+		#calculate time dif	
 		var temp_balls = 0
 		
 		var dif_minutes = time.minute - old_time.minute
@@ -267,6 +266,7 @@ func _ready():
 	pokeball_catching= current_board.pokeball_catching
 	pokeleds = current_board.pokeleds
 	pokeled_animator = current_board.pokeled_animator
+	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
 	check_for_pokemon()
 
 func generate_hills_pokedex():
@@ -282,14 +282,13 @@ func generate_hills_pokedex():
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"):
 		balls_remaining += 1000
-	if event.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed ("ui_accept") and $Pokedex.is_visible_in_tree() == false and $Settings.is_visible_in_tree() == false:
 		action_done()
 	if event.is_action_pressed("ui_page_up"):
 		for x in save.hills_pokedex:
 			save.hills_pokedex[x][2] = true
 		for x in save.hills_shinydex:
 			save.hills_shinydex[x][2] = true
-	
 	
 func action_done():
 	if can_continue and can_play:
@@ -308,7 +307,7 @@ func action_done():
 		$ColorRect/NewLabel.hide()
 
 func spawn_ball():
-	if can_play:
+	if can_play:	
 		var ball = ball_scene.instantiate()
 		ball.position = emitter.global_position
 		balls_children.add_child(ball)
@@ -426,7 +425,8 @@ func check_for_pokemon():
 			await get_tree().create_timer(4.5).timeout
 			$ColorRect/Label3/AnimationTree.play("new_animation")
 			can_continue = true
-			
+			pokedex_completion = calculate_pokemon_percentage(save.hills_pokedex, whole_hills_pokedex)
+			shiny_completion = calculate_pokemon_percentage(save.hills_shinydex, whole_hills_pokedex)
 			save_file()
 
 func get_rarity():
@@ -496,7 +496,6 @@ func _process(_delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), $Settings/SettingsWindows/Options/Option2/SFXSlider.value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), $Settings/SettingsWindows/Options/Option2/BGMSlider.value)
 
-
 func _on_button_pressed():
 	$Pokedex.hide()
 	pass # Replace with function body.
@@ -510,11 +509,6 @@ func _on_texture_rect_pressed():
 			$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
 	$Pokedex.show()
 	pass # Replace with function body.
-
-func _on_click_pressed():
-	action_done()
-	pass # Replace with function body.
-
 
 func _on_shiny_enable_pressed():
 	$Pokedex/passhiny.set_disabled(true)
@@ -562,9 +556,30 @@ func _on_shiny_pressed():
 
 func _on_timer_timeout():
 	time_spent += 1
-	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))
+	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
 	pass # Replace with function body.
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_file()
+
+func calculate_pokemon_percentage(dict1, dict2):
+	var count1 := 0
+	for key in dict1.keys():
+		var data = dict1[key]
+		if typeof(data) == TYPE_ARRAY and data.size() >= 3:
+			if data[2] == true:
+				count1 += 1
+	
+	var count2 := 0
+	for rarity in dict2.keys():
+		var pokemon_list = dict2[rarity]
+		if typeof(pokemon_list) == TYPE_ARRAY:
+			count2 += pokemon_list.size()
+	
+	if count2 == 0:
+		push_error("dict2 est vide, division par zéro évitée.")
+		return 0.0
+
+	var percentage := float(count1) / float(count2) * 100.0
+	return percentage
