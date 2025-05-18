@@ -1,6 +1,6 @@
 extends Node2D
 
-const current_version = 1.2
+const current_version = 1.3
 
 #Déclaration des scenes a instancier
 @export var ball_scene: PackedScene
@@ -200,6 +200,12 @@ func _ready():
 					}
 					save["settings"] = temp_settings
 					save.last_version = 1.2
+				1.2:
+					save["ball_count"] = 0
+					save["pokedex_completion"] = 0
+					save["shiny_completion"] = 0
+					save["time_spent"] = 0
+					save.last_version = 1.3
 		
 		$Settings/SettingsWindows/Options/Option2/MasterSlider.value = save.settings.master_volume
 		$Settings/SettingsWindows/Options/Option2/SFXSlider.value = save.settings.sfx_volume
@@ -442,7 +448,9 @@ func update_time():
 
 func _format_seconds_to_hhmmss(seconds):
 	var total_seconds = int(seconds)
+	@warning_ignore("integer_division")
 	var hours = total_seconds / 3600
+	@warning_ignore("integer_division")
 	var minutes = (total_seconds % 3600) / 60
 	var secs = total_seconds % 60
 
