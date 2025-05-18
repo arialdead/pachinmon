@@ -188,6 +188,7 @@ func _ready():
 		pokeball_counter = save.pokeball_counter
 		
 		
+		
 		#Tant que la version n'est pas a jour, update petit a petit
 		while save.last_version != current_version:
 			#Mettre a jour de chaque version, envers chaque version.
@@ -267,6 +268,7 @@ func _ready():
 	pokeball_catching= current_board.pokeball_catching
 	pokeleds = current_board.pokeleds
 	pokeled_animator = current_board.pokeled_animator
+	check_for_pokemon()
 
 func generate_hills_pokedex():
 	var hills_pokedex = {}
@@ -325,6 +327,7 @@ func save_file():
 	save.time_spent = time_spent
 	save.pokedex_completion = pokedex_completion
 	save.shiny_completion = shiny_completion
+	save.pokeball_counter = pokeball_counter
 	var temp_settings = {
 		"master_volume" : $Settings/SettingsWindows/Options/Option2/MasterSlider.value,
 		"sfx_volume" : $Settings/SettingsWindows/Options/Option2/SFXSlider.value,
@@ -335,8 +338,6 @@ func save_file():
 	file.close()
 
 func check_for_pokemon():
-	if pokeball_counter == 6:
-		pokeball_counter = 1
 	match pokeball_counter:
 		0:
 			pokeleds.get_node("Pokeled1").modulate = Color(0.497, 0.497, 0.497)
@@ -347,12 +348,19 @@ func check_for_pokemon():
 		1:
 			pokeleds.get_node("Pokeled1").modulate = Color(1, 1, 1)
 		2:
+			pokeleds.get_node("Pokeled1").modulate = Color(1, 1, 1)
 			pokeleds.get_node("Pokeled2").modulate = Color(1, 1, 1)
 		3:
+			pokeleds.get_node("Pokeled1").modulate = Color(1, 1, 1)
+			pokeleds.get_node("Pokeled2").modulate = Color(1, 1, 1)
 			pokeleds.get_node("Pokeled3").modulate = Color(1, 1, 1)
 		4:
+			pokeleds.get_node("Pokeled1").modulate = Color(1, 1, 1)
+			pokeleds.get_node("Pokeled2").modulate = Color(1, 1, 1)
+			pokeleds.get_node("Pokeled3").modulate = Color(1, 1, 1)
 			pokeleds.get_node("Pokeled4").modulate = Color(1, 1, 1)			
 		5:
+			pokeball_counter = 0
 			can_continue = false
 			#Décidage du pokémon
 			var rarity = get_rarity()
@@ -419,6 +427,7 @@ func check_for_pokemon():
 			await get_tree().create_timer(4.5).timeout
 			$ColorRect/Label3/AnimationTree.play("new_animation")
 			can_continue = true
+			
 			save_file()
 
 func get_rarity():
@@ -482,8 +491,8 @@ func _on_pokeball_body_entered(body):
 			pokeball_catching.get_node("AnimationPlayer").play("new_animation")
 			pokeball_catching.get_node("Timer").start()
 			pokeball_counter += 1
-			save_file()
 			check_for_pokemon()
+			save_file()
 		pass # Replace with function body.
 
 func _process(_delta):
