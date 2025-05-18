@@ -237,7 +237,6 @@ func _ready():
 		pokedex_completion = save.pokedex_completion
 		shiny_completion = save.shiny_completion
 		time_spent = save.time_spent
-		saved_time = save.time_spent
 		
 		#add balls
 		balls_remaining = save.balls + temp_balls
@@ -450,10 +449,6 @@ func get_rarity():
 	else:
 		return "MR"
 		
-func update_time():
-	# Mise à jour du temps de jeu
-	time_spent = Time.get_unix_time_from_system() - current_time + saved_time
-	save_file()
 
 func _format_seconds_to_hhmmss(seconds):
 	var total_seconds = int(seconds)
@@ -550,8 +545,6 @@ func _on_stat_button_pressed():
 	$"Pokedex/Stat button".set_disabled(true)
 	$Pokedex/passhiny.set_disabled(false)
 	$Pokedex/shiny.set_disabled(false)
-	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))
-	update_time()
 	pass # Replace with function body.
 
 
@@ -566,3 +559,12 @@ func _on_shiny_pressed():
 			"hills":
 				$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_shinydex, true)
 	pass # Replace with function body.
+
+func _on_timer_timeout():
+	time_spent += 1
+	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))
+	pass # Replace with function body.
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_file()
