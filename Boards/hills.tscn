@@ -1,10 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://lau8trhpxpax"]
+[gd_scene load_steps=26 format=3 uid="uid://lau8trhpxpax"]
 
 [ext_resource type="Script" path="res://Boards/hills.gd" id="1_457t7"]
-[ext_resource type="Texture2D" uid="uid://w5r5d12gr57p" path="res://Sprite/Game Elements/Hills Background.png" id="2_w5kcc"]
+[ext_resource type="Texture2D" uid="uid://doyuvxqel63g5" path="res://Sprite/Game Elements/ciel.png" id="2_28rqy"]
+[ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="2_yv4jk"]
+[ext_resource type="Texture2D" uid="uid://etpvkb1ava6l" path="res://Sprite/Game Elements/Layout2-Recovered-Recovered-export.png" id="3_4kejo"]
+[ext_resource type="Texture2D" uid="uid://hp20osy8yktd" path="res://Sprite/Game Elements/grass.png" id="3_bhgw6"]
 [ext_resource type="Texture2D" uid="uid://bw2rpvfdoqvo7" path="res://Sprite/Game Elements/Pokeled.png" id="3_hs1v0"]
 [ext_resource type="Texture2D" uid="uid://cjg1tddguqmhe" path="res://Sprite/Game Elements/Controller.png" id="4_j62qg"]
+[ext_resource type="Texture2D" uid="uid://bngxj881j2hr7" path="res://Sprite/Game Elements/grass2.png" id="4_n5a8c"]
+[ext_resource type="Texture2D" uid="uid://c3pvfhf3atsn2" path="res://Sprite/Game Elements/grass3.png" id="5_3kqoc"]
 [ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="5_c6v51"]
+[ext_resource type="Texture2D" uid="uid://8mn5ldxmxhra" path="res://Sprite/Game Elements/nuages.png" id="6_1thx2"]
 [ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Game Elements/Pokéball.png" id="6_boxe2"]
 [ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://Scenes/pin.tscn" id="7_rc2so"]
 
@@ -151,10 +157,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(0.8, 0.8, 0.8),
+"times": PackedFloat32Array(0, 1, 1.9738),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(92, 10), Vector2(165, 10), Vector2(92, 10)]
+"values": [Vector2(36, -85), Vector2(-35, -85), Vector2(36, -85)]
 }
 
 [sub_resource type="Animation" id="Animation_38kf6"]
@@ -249,132 +255,253 @@ _data = {
 "new_animation": SubResource("Animation_ba4mo")
 }
 
-[node name="Hills" type="Node2D"]
+[node name="Hills" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_457t7")
 
 [node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(384, 384)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUD"]
+[node name="ParallaxBackground" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yv4jk")
+
+[node name="Ciel" type="TextureRect" parent="HUD/ParallaxBackground"]
 texture_filter = 1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_w5kcc")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -739.0
+offset_top = -900.0
+offset_right = 739.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_28rqy")
+stretch_mode = 1
 
-[node name="Pokeleds" type="Node2D" parent="."]
-position = Vector2(128, 87)
+[node name="TextureRect3" type="TextureRect" parent="HUD/ParallaxBackground"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -741.0
+offset_top = -900.0
+offset_right = 741.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_3kqoc")
+stretch_mode = 1
 
-[node name="Pokeled1" type="Sprite2D" parent="Pokeleds"]
+[node name="TextureRect4" type="TextureRect" parent="HUD/ParallaxBackground"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -739.0
+offset_top = -900.0
+offset_right = 739.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_n5a8c")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/ParallaxBackground"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -742.0
+offset_top = -900.0
+offset_right = 742.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_bhgw6")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="HUD/ParallaxBackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 2.0
+offset_right = 386.0
+offset_bottom = 384.0
+grow_horizontal = 2
+texture = ExtResource("6_1thx2")
+
+[node name="TextureRect5" type="TextureRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 96)
+texture = ExtResource("3_4kejo")
+
+[node name="BoardContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="Pokeleds" type="Node2D" parent="BoardContainer"]
+position = Vector2(0, -9)
+metadata/_edit_group_ = true
+
+[node name="Pokeled1" type="Sprite2D" parent="BoardContainer/Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(-12, 0)
 texture = ExtResource("3_hs1v0")
 
-[node name="Pokeled2" type="Sprite2D" parent="Pokeleds"]
+[node name="Pokeled2" type="Sprite2D" parent="BoardContainer/Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(-6, 0)
 texture = ExtResource("3_hs1v0")
 
-[node name="Pokeled3" type="Sprite2D" parent="Pokeleds"]
+[node name="Pokeled3" type="Sprite2D" parent="BoardContainer/Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 texture = ExtResource("3_hs1v0")
 
-[node name="Pokeled4" type="Sprite2D" parent="Pokeleds"]
+[node name="Pokeled4" type="Sprite2D" parent="BoardContainer/Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(6, 0)
 texture = ExtResource("3_hs1v0")
 
-[node name="Pokeled5" type="Sprite2D" parent="Pokeleds"]
+[node name="Pokeled5" type="Sprite2D" parent="BoardContainer/Pokeleds"]
 modulate = Color(0.497474, 0.497474, 0.497474, 1)
 position = Vector2(12, 0)
 texture = ExtResource("3_hs1v0")
 
-[node name="PokeledAnimator" type="AnimationPlayer" parent="Pokeleds"]
+[node name="PokeledAnimator" type="AnimationPlayer" parent="BoardContainer/Pokeleds"]
 libraries = {
 "": SubResource("AnimationLibrary_s341i")
 }
 
-[node name="BallsChildren" type="Node2D" parent="."]
+[node name="BallsChildren" type="Node2D" parent="BoardContainer"]
+position = Vector2(-128, -96)
+metadata/_edit_group_ = true
 
-[node name="BallEmiter" type="Node2D" parent="."]
+[node name="BallEmiter" type="Node2D" parent="BoardContainer"]
 position = Vector2(92, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="BallEmiter"]
-position = Vector2(0, -7)
+[node name="Sprite2D" type="Sprite2D" parent="BoardContainer/BallEmiter"]
+position = Vector2(0, -9)
 texture = ExtResource("4_j62qg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BallEmiter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoardContainer/BallEmiter"]
 libraries = {
 "": SubResource("AnimationLibrary_c1het")
 }
 script = ExtResource("5_c6v51")
 
-[node name="Walls" type="StaticBody2D" parent="."]
-position = Vector2(71, 100)
+[node name="Walls" type="StaticBody2D" parent="BoardContainer"]
+position = Vector2(-57, 4)
+metadata/_edit_group_ = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/Walls"]
 polygon = PackedVector2Array(-81, -57, 54, -152, 205, -72, 201, 62, 134, 32, 126, 16, 105, 6, 110, -14, 119, -33, 105, -84, 95, -93, 19, -93, 8, -84, -6, -30, 5, -13, 9, 6, -12, 16)
 
-[node name="NewBalls" type="Node2D" parent="."]
+[node name="NewBalls" type="Node2D" parent="BoardContainer"]
+position = Vector2(-128, -96)
+metadata/_edit_group_ = true
 
-[node name="NewBall" type="Area2D" parent="NewBalls"]
+[node name="NewBall" type="Area2D" parent="BoardContainer/NewBalls"]
 position = Vector2(128, 170)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/NewBalls/NewBall"]
 polygon = PackedVector2Array(-3, -2, 3, -2, 3, 1, 2, 2, -2, 2, -3, 1)
 
-[node name="NewBall2" type="Area2D" parent="NewBalls"]
+[node name="NewBall2" type="Area2D" parent="BoardContainer/NewBalls"]
 position = Vector2(95, 157)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/NewBalls/NewBall2"]
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
 
-[node name="NewBall3" type="Area2D" parent="NewBalls"]
+[node name="NewBall3" type="Area2D" parent="BoardContainer/NewBalls"]
 position = Vector2(161, 157)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall3"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/NewBalls/NewBall3"]
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 1, 1, 2, -1, 2, -2, 1)
 
-[node name="NewBall4" type="Area2D" parent="NewBalls"]
+[node name="NewBall4" type="Area2D" parent="BoardContainer/NewBalls"]
 position = Vector2(181, 148)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall4"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/NewBalls/NewBall4"]
 polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
 
-[node name="NewBall5" type="Area2D" parent="NewBalls"]
+[node name="NewBall5" type="Area2D" parent="BoardContainer/NewBalls"]
 position = Vector2(76, 148)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NewBalls/NewBall5"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/NewBalls/NewBall5"]
 polygon = PackedVector2Array(-3, -3, 2, -3, 2, 1, 1, 2, -2, 2, -3, 1)
 
-[node name="OutZones" type="Node2D" parent="."]
+[node name="OutZones" type="Node2D" parent="BoardContainer"]
+position = Vector2(-128, -96)
+metadata/_edit_group_ = true
 
-[node name="OutZone" type="Area2D" parent="OutZones"]
+[node name="OutZone" type="Area2D" parent="BoardContainer/OutZones"]
 position = Vector2(128, 85)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutZones/OutZone"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoardContainer/OutZones/OutZone"]
 modulate = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-70, 58, -50, 82, -7, 92, 7, 92, 38, 86, 52, 82, 70, 57, 71, 58, 53, 83, 30, 92, 3, 95, -11, 94, -52, 83, -72, 58)
 
-[node name="PokeballCatching" type="StaticBody2D" parent="."]
-position = Vector2(128, 77)
+[node name="PokeballCatching" type="StaticBody2D" parent="BoardContainer"]
+position = Vector2(0, -19)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PokeballCatching"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/PokeballCatching"]
 shape = SubResource("CircleShape2D_2wft8")
 
-[node name="Pokeball" type="Area2D" parent="PokeballCatching"]
+[node name="Pokeball" type="Area2D" parent="BoardContainer/PokeballCatching"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PokeballCatching/Pokeball"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardContainer/PokeballCatching/Pokeball"]
 shape = SubResource("CircleShape2D_2gl5p")
 
-[node name="Timer" type="Timer" parent="PokeballCatching"]
+[node name="Timer" type="Timer" parent="BoardContainer/PokeballCatching"]
 wait_time = 0.2
 one_shot = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="PokeballCatching"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BoardContainer/PokeballCatching"]
 emitting = false
 amount = 10
 lifetime = 2.0
@@ -387,230 +514,232 @@ initial_velocity_min = 30.0
 initial_velocity_max = 40.0
 color_ramp = SubResource("Gradient_nlc4g")
 
-[node name="Sprite2D" type="Sprite2D" parent="PokeballCatching"]
+[node name="Sprite2D" type="Sprite2D" parent="BoardContainer/PokeballCatching"]
 texture = ExtResource("6_boxe2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PokeballCatching"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoardContainer/PokeballCatching"]
 libraries = {
 "": SubResource("AnimationLibrary_vfyfm")
 }
 
-[node name="PinContainer" type="Node2D" parent="."]
+[node name="PinContainer" type="Node2D" parent="BoardContainer"]
+position = Vector2(-128, -96)
+metadata/_edit_group_ = true
 
-[node name="Pin" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 
-[node name="Pin2" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin2" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(138, 28)
 
-[node name="Pin3" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin3" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(118, 28)
 
-[node name="Pin70" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin70" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(122, 22)
 
-[node name="Pin71" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin71" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(134, 22)
 
-[node name="Pin4" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin4" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(111, 39)
 
-[node name="Pin5" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin5" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(102, 51)
 
-[node name="Pin72" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin72" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(109, 58)
 
-[node name="Pin73" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin73" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(147, 58)
 
-[node name="Pin6" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin6" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(92, 56)
 
-[node name="Pin7" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin7" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(85, 48)
 
-[node name="Pin8" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin8" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(80, 45)
 
-[node name="Pin9" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin9" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(76, 42)
 
-[node name="Pin10" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin10" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(82, 57)
 
-[node name="Pin11" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin11" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(76, 63)
 
-[node name="Pin12" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin12" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(73, 67)
 
-[node name="Pin13" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin13" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(80, 76)
 
-[node name="Pin14" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin14" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(99, 70)
 
-[node name="Pin15" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin15" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(104, 74)
 
-[node name="Pin16" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin16" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(109, 79)
 
-[node name="Pin17" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin17" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(98, 86)
 
-[node name="Pin18" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin18" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(89, 90)
 
-[node name="Pin19" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin19" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 95)
 
-[node name="Pin20" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin20" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(121, 101)
 
-[node name="Pin21" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin21" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 106)
 
-[node name="Pin22" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin22" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 111)
 
-[node name="Pin23" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin23" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(135, 101)
 
-[node name="Pin24" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin24" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 106)
 
-[node name="Pin25" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin25" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 93)
 
-[node name="Pin26" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin26" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 95)
 
-[node name="Pin27" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin27" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(147, 79)
 
-[node name="Pin28" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin28" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(158, 86)
 
-[node name="Pin29" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin29" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(167, 90)
 
-[node name="Pin30" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin30" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(176, 76)
 
-[node name="Pin31" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin31" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(157, 70)
 
-[node name="Pin32" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin32" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(152, 74)
 
-[node name="Pin33" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin33" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(137, 68)
 
-[node name="Pin34" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin34" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 64)
 
-[node name="Pin35" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin35" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(119, 68)
 
-[node name="Pin36" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin36" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(164, 56)
 
-[node name="Pin37" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin37" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(174, 57)
 
-[node name="Pin38" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin38" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(180, 63)
 
-[node name="Pin39" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin39" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(183, 67)
 
-[node name="Pin40" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin40" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(154, 51)
 
-[node name="Pin41" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin41" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(145, 39)
 
-[node name="Pin42" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin42" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(171, 48)
 
-[node name="Pin43" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin43" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(176, 45)
 
-[node name="Pin44" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin44" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(180, 42)
 
-[node name="Pin45" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin45" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 117)
 
-[node name="Pin46" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin46" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(141, 122)
 
-[node name="Pin47" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin47" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(115, 122)
 
-[node name="Pin48" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin48" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 117)
 
-[node name="Pin49" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin49" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(107, 136)
 
-[node name="Pin50" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin50" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 140)
 
-[node name="Pin51" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin51" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(128, 145)
 
-[node name="Pin52" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin52" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 140)
 
-[node name="Pin53" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin53" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(149, 136)
 
-[node name="Pin54" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin54" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(168, 128)
 
-[node name="Pin55" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin55" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(171, 113)
 
-[node name="Pin56" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin56" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(184, 123)
 
-[node name="Pin57" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin57" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(181, 135)
 
-[node name="Pin58" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin58" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(161, 145)
 
-[node name="Pin59" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin59" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(141, 156)
 
-[node name="Pin60" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin60" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(139, 162)
 
-[node name="Pin61" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin61" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(134, 166)
 
-[node name="Pin62" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin62" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(122, 166)
 
-[node name="Pin63" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin63" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(117, 162)
 
-[node name="Pin64" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin64" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(115, 156)
 
-[node name="Pin65" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin65" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(95, 145)
 
-[node name="Pin66" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin66" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(75, 135)
 
-[node name="Pin67" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin67" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(88, 128)
 
-[node name="Pin68" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin68" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(72, 123)
 
-[node name="Pin69" parent="PinContainer" instance=ExtResource("7_rc2so")]
+[node name="Pin69" parent="BoardContainer/PinContainer" instance=ExtResource("7_rc2so")]
 position = Vector2(85, 119)

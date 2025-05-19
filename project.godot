@@ -21,9 +21,11 @@ buses/default_bus_layout="res://GodotBase/default_bus_layout.tres"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=192
-window/stretch/mode="viewport"
+window/size/viewport_width=384
+window/size/viewport_height=384
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [importer_defaults]
 
