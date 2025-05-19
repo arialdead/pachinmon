@@ -301,7 +301,7 @@ pivot_offset = Vector2(256, 900)
 texture = ExtResource("2_28rqy")
 stretch_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="HUD/ParallaxBackground"]
+[node name="GrassDarker" type="TextureRect" parent="HUD/ParallaxBackground"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -318,7 +318,7 @@ pivot_offset = Vector2(256, 900)
 texture = ExtResource("5_3kqoc")
 stretch_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="HUD/ParallaxBackground"]
+[node name="GrassDark" type="TextureRect" parent="HUD/ParallaxBackground"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -335,7 +335,7 @@ pivot_offset = Vector2(256, 900)
 texture = ExtResource("4_n5a8c")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="HUD/ParallaxBackground"]
+[node name="Grass" type="TextureRect" parent="HUD/ParallaxBackground"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -352,7 +352,7 @@ pivot_offset = Vector2(256, 900)
 texture = ExtResource("3_bhgw6")
 stretch_mode = 1
 
-[node name="TextureRect5" type="TextureRect" parent="HUD/ParallaxBackground"]
+[node name="Nuages" type="TextureRect" parent="HUD/ParallaxBackground"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
