@@ -545,7 +545,7 @@ press_to_continue_animator = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisp
 master_slider = NodePath("CanvasLayer/Settings/SettingsWindows/Options/OptionsControls/MasterSlider")
 sfx_slider = NodePath("CanvasLayer/Settings/SettingsWindows/Options/OptionsControls/SFXSlider")
 bgm_slider = NodePath("CanvasLayer/Settings/SettingsWindows/Options/OptionsControls/BGMSlider")
-stats_label = NodePath("CanvasLayer/Pokedex/StatsAllContainer/StatsContainer/StatsLabel")
+stats_label = NodePath("CanvasLayer/Pokedex/StatsAllContainer/StatsLabel")
 balls_remaining_label = NodePath("CanvasLayer/HUD2/HUDLowerButtonContainer/BallsRemainingLabel")
 rarity_label = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel")
 new_label = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel")
@@ -557,9 +557,9 @@ pokedex_display_node = NodePath("CanvasLayer/Pokedex/ScrollPokedex/PokedexDispla
 scroll_pokedex_node = NodePath("CanvasLayer/Pokedex/ScrollPokedex")
 stats_node = NodePath("CanvasLayer/Pokedex/StatsAllContainer")
 board_container = NodePath("CanvasLayer/BoardContainer")
-pas_shiny_button = NodePath("CanvasLayer/Pokedex/PasShiny")
-shiny_button = NodePath("CanvasLayer/Pokedex/Shiny")
-stats_button = NodePath("CanvasLayer/Pokedex/StatsButton")
+pas_shiny_button = NodePath("CanvasLayer/Pokedex/PokedexButtons/PasShiny")
+shiny_button = NodePath("CanvasLayer/Pokedex/PokedexButtons/Shiny")
+stats_button = NodePath("CanvasLayer/Pokedex/PokedexButtons/StatsButton")
 round_sprite = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round")
 pokemon_sprites = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites")
 ball_scene = ExtResource("2_aubgf")
@@ -640,10 +640,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1549.0
-offset_top = 628.0
-offset_right = 1917.0
-offset_bottom = 660.0
+offset_left = 1421.0
+offset_top = 532.0
+offset_right = 1789.0
+offset_bottom = 564.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 32)
@@ -757,6 +757,7 @@ libraries = {
 }
 
 [node name="HUD2" type="Control" parent="CanvasLayer"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -808,11 +809,13 @@ texture_pressed = ExtResource("11_g2di1")
 texture_hover = ExtResource("11_q6xbs")
 
 [node name="Pokedex" type="Control" parent="CanvasLayer"]
-visible = false
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 192.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BlackBaground" type="ColorRect" parent="CanvasLayer/Pokedex"]
 layout_mode = 1
@@ -824,24 +827,20 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.658824)
 
 [node name="StatsAllContainer" type="HBoxContainer" parent="CanvasLayer/Pokedex"]
-visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 242.0
+offset_bottom = 207.0
 
-[node name="StatsContainer" type="VBoxContainer" parent="CanvasLayer/Pokedex/StatsAllContainer"]
-layout_mode = 2
-
-[node name="StatsLabel" type="Label" parent="CanvasLayer/Pokedex/StatsAllContainer/StatsContainer"]
+[node name="StatsLabel" type="Label" parent="CanvasLayer/Pokedex/StatsAllContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("16_k1mt0")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Common : 100%
 Uncommon : 100%
 Rare : 100%
@@ -853,21 +852,18 @@ MegaRare : 100%"
 [node name="ScrollPokedex" type="ScrollContainer" parent="CanvasLayer/Pokedex"]
 custom_minimum_size = Vector2(218, 188)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -94.0
-offset_right = 92.0
-offset_bottom = 94.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_to0a8")
 
 [node name="PokedexDisplay" type="GridContainer" parent="CanvasLayer/Pokedex/ScrollPokedex"]
+texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 3
@@ -875,45 +871,39 @@ script = ExtResource("17_y5neg")
 res_pokemon_template = ExtResource("15_3fld7")
 metadata/_edit_use_anchors_ = true
 
-[node name="Close button" type="TextureButton" parent="CanvasLayer/Pokedex"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 2.0
-offset_right = 255.0
-offset_bottom = 18.0
+[node name="PokedexButtons" type="VBoxContainer" parent="CanvasLayer/Pokedex"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 79.0
+grow_horizontal = 0
+
+[node name="Close button" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+layout_mode = 2
 texture_normal = ExtResource("18_akpa7")
 texture_pressed = ExtResource("19_u00ih")
 texture_hover = ExtResource("20_doqxe")
 
-[node name="PasShiny" type="TextureButton" parent="CanvasLayer/Pokedex"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 20.0
-offset_right = 255.0
-offset_bottom = 36.0
+[node name="PasShiny" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+layout_mode = 2
 texture_normal = ExtResource("26_jhsbo")
 texture_pressed = ExtResource("26_jhsbo")
 texture_hover = ExtResource("26_jhsbo")
 texture_disabled = ExtResource("17_iku5n")
-metadata/_edit_use_anchors_ = true
 
-[node name="Shiny" type="TextureButton" parent="CanvasLayer/Pokedex"]
-layout_mode = 0
-offset_left = 221.0
-offset_top = 20.0
-offset_right = 237.0
-offset_bottom = 36.0
+[node name="Shiny" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+layout_mode = 2
 texture_normal = ExtResource("29_x2ici")
 texture_pressed = ExtResource("29_x2ici")
 texture_hover = ExtResource("31_2wf0t")
 texture_disabled = ExtResource("20_v4aqd")
 
-[node name="StatsButton" type="TextureButton" parent="CanvasLayer/Pokedex"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 38.0
-offset_right = 255.0
-offset_bottom = 54.0
+[node name="StatsButton" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+layout_mode = 2
 texture_normal = ExtResource("20_4u7n8")
 texture_pressed = ExtResource("21_2qnb5")
 texture_disabled = ExtResource("21_2qnb5")
@@ -921,10 +911,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
 visible = false
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 192.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SettingsBackground" type="ColorRect" parent="CanvasLayer/Settings"]
 layout_mode = 1
@@ -1051,9 +1044,9 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/HUD2/Click" to="." method="_on_click_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD2/HUDLowerButtonContainer/PokedexButton" to="." method="_on_texture_rect_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD2/HUDLowerButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pokedex/Close button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pokedex/PasShiny" to="." method="_on_shiny_enable_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pokedex/Shiny" to="." method="_on_shiny_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pokedex/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pokedex/PokedexButtons/Close button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pokedex/PokedexButtons/PasShiny" to="." method="_on_shiny_enable_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pokedex/PokedexButtons/Shiny" to="." method="_on_shiny_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pokedex/PokedexButtons/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Settings/CloseSettings" to="." method="_on_close_settings_pressed"]
 [connection signal="timeout" from="OneSecondTimer" to="." method="_on_timer_timeout"]
