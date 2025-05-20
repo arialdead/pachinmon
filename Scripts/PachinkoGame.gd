@@ -40,9 +40,7 @@ const current_version = 1.3
  
 @export_category("Animated Sprite 2D")
 @export var pokemon_sprites : AnimatedSprite2D
-
-@export_category("Particles Generator")
-@export var shiny_particles : CPUParticles2D
+@export var shiny_particles : AnimatedSprite2D
 
 #Déclaration des scenes a instancier
 @export_category("Scenes")
@@ -428,7 +426,7 @@ func check_for_pokemon():
 					rarity_label.text = "MEGA RARE !!!!!!! T_T (1%)"
 			
 			#shiny
-			var shiny_check = rng.randi_range (1,1)
+			var shiny_check = rng.randi_range (1,512)
 			if shiny_check == 1:
 				pokemon_sprites.play(str(pokemon[1])+"s")
 				$SoundPlayer/sfx_shiny.volume_db = 0
@@ -627,6 +625,8 @@ func calculate_pokemon_percentage(dict1, dict2):
 
 func _on_catch_animator_animation_finished(anim_name):
 	if anim_name != "Closing":
+		print("Gros caca")
+		shiny_particles.play("Shiny")
 		press_to_continue_animator.play("new_animation")
 		can_continue = true
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://da6d6unxurmtx"]
+[gd_scene load_steps=91 format=3 uid="uid://da6d6unxurmtx"]
 
 [ext_resource type="Script" path="res://Scripts/PachinkoGame.gd" id="1_hvfcm"]
 [ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://Scenes/ball.tscn" id="2_aubgf"]
@@ -15,25 +15,41 @@
 [ext_resource type="Texture2D" uid="uid://dtom0f2m5sg2i" path="res://Sprite/HUD/pokedex.png" id="13_xhgqe"]
 [ext_resource type="Texture2D" uid="uid://uk00mvl0mpp1" path="res://Sprite/HUD/pokedex_pressed.png" id="14_52y2f"]
 [ext_resource type="PackedScene" uid="uid://ior8ibenns5y" path="res://Scenes/pokemon_template.tscn" id="15_3fld7"]
-[ext_resource type="Texture2D" uid="uid://bfrj0d6d6qxx1" path="res://Sprite/Game Elements/shiny.png" id="15_kesw1"]
 [ext_resource type="AudioStream" uid="uid://rcuw26ewoav2" path="res://Sounds/showtime_undertale.ogg" id="15_m2yg6"]
+[ext_resource type="Texture2D" uid="uid://dwtw1dr2cps4d" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation1.png" id="15_m500v"]
 [ext_resource type="Texture2D" uid="uid://cdp7ufw0rcj88" path="res://Sprite/HUD/pokedex_hover.png" id="15_sqsr2"]
+[ext_resource type="Texture2D" uid="uid://jh7r1ewxiyxd" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation2.png" id="16_gwwno"]
 [ext_resource type="FontFile" uid="uid://rw0divhmlh6r" path="res://Fonts/m5x7.ttf" id="16_k1mt0"]
 [ext_resource type="Texture2D" uid="uid://50n36vfyajpa" path="res://Sprite/HUD/passhiny_disable.png" id="17_iku5n"]
+[ext_resource type="Texture2D" uid="uid://t2qddb0t3fh2" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation3.png" id="17_ugd77"]
 [ext_resource type="Script" path="res://Scripts/PokedexDisplay.gd" id="17_y5neg"]
 [ext_resource type="Texture2D" uid="uid://duw5x5ggbpy5" path="res://Sprite/HUD/close.png" id="18_akpa7"]
+[ext_resource type="Texture2D" uid="uid://cn7fss8p2i6vg" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation4.png" id="18_xa16f"]
 [ext_resource type="AudioStream" uid="uid://bfdygkjq7sr6c" path="res://Sounds/new_ball.ogg" id="19_7sijj"]
+[ext_resource type="Texture2D" uid="uid://b4ryqpx3oiiqf" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation5.png" id="19_p3kk5"]
 [ext_resource type="Texture2D" uid="uid://c8n5ds1r88tif" path="res://Sprite/HUD/close_pressed.png" id="19_u00ih"]
 [ext_resource type="Texture2D" uid="uid://cefodiilvipf5" path="res://Sprite/HUD/stats_button.png" id="20_4u7n8"]
 [ext_resource type="Texture2D" uid="uid://c0dtpct1im6a5" path="res://Sprite/HUD/close_hover.png" id="20_doqxe"]
 [ext_resource type="AudioStream" uid="uid://c4ieut7msoaqa" path="res://Sounds/launch_ball.ogg" id="20_neuii"]
+[ext_resource type="Texture2D" uid="uid://dcx4xkdvj6unq" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation6.png" id="20_t3xkj"]
 [ext_resource type="Texture2D" uid="uid://cuwkhi1866rlv" path="res://Sprite/HUD/passhiny_hover.png" id="20_v4aqd"]
 [ext_resource type="Texture2D" uid="uid://uw67s87b23fa" path="res://Sprite/HUD/stats_button_pressed.png" id="21_2qnb5"]
+[ext_resource type="Texture2D" uid="uid://ci8xe7tiyjjqu" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation7.png" id="21_kqfhl"]
+[ext_resource type="Texture2D" uid="uid://cks6beaebim4o" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation8.png" id="22_icjgr"]
+[ext_resource type="Texture2D" uid="uid://cbgk1odfgvxvc" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation9.png" id="23_lh03g"]
+[ext_resource type="Texture2D" uid="uid://d1pnmtwioaaa1" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation10.png" id="24_btq4m"]
+[ext_resource type="Texture2D" uid="uid://cjn4u3j4sw6v6" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation11.png" id="25_fx0ld"]
 [ext_resource type="Texture2D" uid="uid://4j881kkfma65" path="res://Sprite/HUD/passhiny.png" id="26_jhsbo"]
+[ext_resource type="Texture2D" uid="uid://cmwlo01rh6js6" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation12.png" id="26_mylcv"]
+[ext_resource type="Texture2D" uid="uid://c1x1l2uhmdihc" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation13.png" id="27_17oye"]
+[ext_resource type="Texture2D" uid="uid://bn4ax6wt22usq" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation14.png" id="28_0nqc6"]
+[ext_resource type="Texture2D" uid="uid://c8y035c56p4ie" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation15.png" id="29_fq608"]
 [ext_resource type="AudioStream" uid="uid://ce37ppeoepoej" path="res://Sounds/catching3.ogg" id="29_wt0wu"]
 [ext_resource type="Texture2D" uid="uid://8qi6ff4u8mg5" path="res://Sprite/HUD/shiny.png" id="29_x2ici"]
+[ext_resource type="Texture2D" uid="uid://vc64hm6ar6so" path="res://Sprite/Game Elements/ShinyAnimation/shiny_animation16.png" id="30_8586o"]
 [ext_resource type="AudioStream" uid="uid://dvlmef1n17pf5" path="res://Sounds/catching2.ogg" id="30_n1g5e"]
 [ext_resource type="Texture2D" uid="uid://0k0w7typ01uu" path="res://Sprite/HUD/shiny_hover.png" id="31_2wf0t"]
+[ext_resource type="Texture2D" uid="uid://bpgrqwcvsotvs" path="res://Sprite/Game Elements/vide.png" id="31_gp81t"]
 [ext_resource type="AudioStream" uid="uid://dfdtyb5pqc2jv" path="res://Sounds/common.ogg" id="34_ygp0h"]
 [ext_resource type="AudioStream" uid="uid://djvd5rym7hqna" path="res://Sounds/uncommon.ogg" id="35_c8lju"]
 [ext_resource type="AudioStream" uid="uid://crx0x6wctig80" path="res://Sounds/rare.ogg" id="36_qjoix"]
@@ -95,9 +111,69 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Gradient" id="Gradient_u8cln"]
-offsets = PackedFloat32Array(0.429319, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="SpriteFrames" id="SpriteFrames_22263"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_m500v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gwwno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ugd77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xa16f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_p3kk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_t3xkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kqfhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_icjgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_lh03g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_btq4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_fx0ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_mylcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_17oye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0nqc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_fq608")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_8586o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_gp81t")
+}],
+"loop": false,
+"name": &"Shiny",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_uaggq"]
 length = 0.001
@@ -1808,7 +1884,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1816,18 +1892,6 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0, 6.2, 6.21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vkura"]
@@ -2567,29 +2631,13 @@ sprite_frames = ExtResource("12_rw5n3")
 animation = &"784"
 metadata/_edit_lock_ = true
 
-[node name="ShinyParticles" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites"]
+[node name="ShinyParticles" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites"]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(0, 3.75)
 scale = Vector2(0.25, 0.25)
-emitting = false
-amount = 16
-lifetime = 2.0
-one_shot = true
-explosiveness = 0.34
-texture = ExtResource("15_kesw1")
-emission_shape = 3
-emission_rect_extents = Vector2(64, 64)
-direction = Vector2(0, -263)
-gravity = Vector2(0, 100)
-initial_velocity_min = 67.23
-initial_velocity_max = 67.23
-radial_accel_min = 15.12
-radial_accel_max = 15.12
-angle_min = -720.0
-angle_max = 720.0
-scale_amount_min = 0.5
-scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_u8cln")
+sprite_frames = SubResource("SpriteFrames_22263")
+animation = &"Shiny"
+frame = 16
+frame_progress = 1.0
 
 [node name="WildPokemonAppearsLabel" type="Label" parent="CanvasLayer/ColorRect/CatchingPokemonDisplay"]
 texture_filter = 1

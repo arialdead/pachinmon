@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bngxj881j2hr7" path="res://Sprite/Game Elements/grass2.png" id="4_n5a8c"]
 [ext_resource type="Texture2D" uid="uid://c3pvfhf3atsn2" path="res://Sprite/Game Elements/grass3.png" id="5_3kqoc"]
 [ext_resource type="Script" path="res://Scripts/AnimationPlayer.gd" id="5_c6v51"]
-[ext_resource type="Texture2D" uid="uid://8mn5ldxmxhra" path="res://Sprite/Game Elements/nuages.png" id="6_1thx2"]
 [ext_resource type="Texture2D" uid="uid://cq5gu7kuaepwu" path="res://Sprite/Game Elements/Pokéball.png" id="6_boxe2"]
+[ext_resource type="Texture2D" uid="uid://b6uk626vxj0w8" path="res://Sprite/Game Elements/nuage.png" id="7_f4cgq"]
 [ext_resource type="PackedScene" uid="uid://n72d2l4h3760" path="res://Scenes/pin.tscn" id="7_rc2so"]
 
 [sub_resource type="Animation" id="Animation_rntxr"]
@@ -354,14 +354,20 @@ stretch_mode = 1
 
 [node name="Nuages" type="TextureRect" parent="HUD/ParallaxBackground"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = 2.0
-offset_right = 386.0
-offset_bottom = 384.0
+anchor_bottom = 1.0
+offset_left = -687.0
+offset_top = -900.0
+offset_right = 192.0
 grow_horizontal = 2
-texture = ExtResource("6_1thx2")
+grow_vertical = 0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(192, 900)
+texture = ExtResource("7_f4cgq")
+stretch_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="HUD"]
 layout_mode = 1

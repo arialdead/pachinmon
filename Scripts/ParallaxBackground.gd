@@ -19,4 +19,8 @@ func _process(delta):
 	$GrassDarker.position.x += 0.1
 	if $GrassDarker.position.x > -320 + 512:
 		$GrassDarker.position.x -= 512
+	
+	$Nuages.position.x += 0.02
+	if $Nuages.position.x > -320 + 512:
+		$Nuages.position.x -= 512
 	pass
