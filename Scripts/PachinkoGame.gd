@@ -1,6 +1,6 @@
 extends Node2D
 
-const current_version = 1.3
+const current_version = 1.4
 
 #Déclaration des nodes a réferencer
 @export_category("Animator") 
@@ -243,6 +243,9 @@ func _ready():
 					save["shiny_completion"] = 0
 					save["time_spent"] = 0
 					save.last_version = 1.3
+				1.3:
+					save["last_board"] = "hills"
+					save.last_version = 1.4
 		
 		master_slider.value = save.settings.master_volume
 		sfx_slider.value = save.settings.sfx_volume
@@ -286,6 +289,10 @@ func _ready():
 	var current_board
 	match save.last_board:
 		"hills":
+			var uwu = hills.instantiate()
+			board_container.add_child(uwu)
+			current_board = uwu
+		_:
 			var uwu = hills.instantiate()
 			board_container.add_child(uwu)
 			current_board = uwu
