@@ -9,6 +9,10 @@
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("1_hwngr")
 
 [node name="PokemonContainer" type="Panel" parent="."]
@@ -25,6 +29,7 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("2_k3h7j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PokemonContainer"]
@@ -45,6 +50,7 @@ offset_right = 46.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("4_0wkf4")
 text = "Mega Venusaur"
 horizontal_alignment = 1

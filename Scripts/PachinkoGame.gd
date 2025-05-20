@@ -2,9 +2,49 @@ extends Node2D
 
 const current_version = 1.3
 
+#Déclaration des nodes a réferencer
+@export_category("Animator") 
+@export var rarity_label_animator : AnimationPlayer
+@export var new_label_animator : AnimationPlayer
+@export var catch_animator : AnimationPlayer
+@export var press_to_continue_animator : AnimationPlayer
+
+@export_category("Sliders")
+@export var master_slider : Slider
+@export var sfx_slider : Slider
+@export var bgm_slider : Slider
+
+@export_category("Labels")
+@export var stats_label : Label
+@export var balls_remaining_label : Label
+@export var rarity_label : Label
+@export var new_label : Label
+@export var pokemon_name_display : Label
+@export var catching_labels_container : VBoxContainer
+
+@export_category("Nodes")
+@export var pokedex_node : Node
+@export var settings_node : Node
+@export var pokedex_display_node : Node
+@export var scroll_pokedex_node : Node
+@export var stats_node : Node
+@export var board_container : Node
+
+@export_category("Texture Buttons")
+@export var pas_shiny_button : TextureButton
+@export var shiny_button : TextureButton
+@export var stats_button : TextureButton
+
+@export_category("Sprite 2D")
+@export var round_sprite : Sprite2D
+
+@export_category("Animated Sprite 2D")
+@export var pokemon_sprites : AnimatedSprite2D
+
 #Déclaration des scenes a instancier
+@export_category("Scenes")
 @export var ball_scene: PackedScene
-const HILLS = preload("res://Boards/hills.tscn")
+@export var hills : PackedScene
 
 #Déclaration des variables essentiels ⚠️ A verifier lesquels sont vrmt essentiels
 var balls_remaining = 500
@@ -22,8 +62,6 @@ var board = "hills"
 var display_shiny = false
 var current_time = Time.get_unix_time_from_system()
 
-#Déclaration de variable que c'est chiant a retrouver
-@onready var catch_animator = $ColorRect/AnimationPlayer
 
 #Déclaration des variables pour load le board
 var emitter
@@ -113,8 +151,8 @@ var whole_hills_pokedex = {
 func _ready():
 
 	#Prelaunch Animations
-	$ColorRect/RarityLabel/AnimationPlayer.play("loop")
-	$ColorRect/NewLabel/AnimationPlayer.play("Scaling")
+	rarity_label_animator.play("loop")
+	new_label_animator.play("Scaling")
 	
 	#Load or create save file
 	if not FileAccess.file_exists("user://save.save"):
@@ -141,8 +179,6 @@ func _ready():
 		balls_remaining = 500
 		save_file()
 	else:
-		
-		
 		var file = FileAccess.open("user://save.save", FileAccess.READ)
 		save = file.get_var()
 		
@@ -207,9 +243,9 @@ func _ready():
 					save["time_spent"] = 0
 					save.last_version = 1.3
 		
-		$Settings/SettingsWindows/Options/Option2/MasterSlider.value = save.settings.master_volume
-		$Settings/SettingsWindows/Options/Option2/SFXSlider.value = save.settings.sfx_volume
-		$Settings/SettingsWindows/Options/Option2/BGMSlider.value = save.settings.bgm_volume
+		master_slider.value = save.settings.master_volume
+		sfx_slider.value = save.settings.sfx_volume
+		bgm_slider.value = save.settings.bgm_volume
 		
 		var time = Time.get_datetime_dict_from_system()
 		var old_time = save.last_time_got_ball
@@ -249,9 +285,8 @@ func _ready():
 	var current_board
 	match save.last_board:
 		"hills":
-			var uwu = HILLS.instantiate()
-			add_child(uwu)
-			move_child(uwu, 0)
+			var uwu = hills.instantiate()
+			board_container.add_child(uwu)
 			current_board = uwu
 	emitter = current_board.emitter
 	balls_children = current_board.balls_children
@@ -266,7 +301,7 @@ func _ready():
 	pokeball_catching= current_board.pokeball_catching
 	pokeleds = current_board.pokeleds
 	pokeled_animator = current_board.pokeled_animator
-	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
+	stats_label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
 	check_for_pokemon()
 
 func generate_hills_pokedex():
@@ -282,7 +317,7 @@ func generate_hills_pokedex():
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"):
 		balls_remaining += 1000
-	if Input.is_action_just_pressed ("ui_accept") and $Pokedex.is_visible_in_tree() == false and $Settings.is_visible_in_tree() == false:
+	if Input.is_action_just_pressed ("ui_accept") and pokedex_node.is_visible_in_tree() == false and settings_node.is_visible_in_tree() == false:
 		action_done()
 	if event.is_action_pressed("ui_page_up"):
 		for x in save.hills_pokedex:
@@ -297,20 +332,21 @@ func action_done():
 			
 	elif can_continue and not can_play:
 		catch_animator.play("Closing")
-		$ColorRect/Label3/AnimationTree.pause()
+		press_to_continue_animator.pause()
 		await get_tree().create_timer(1.0).timeout
 		can_play = true
 		for ball in balls:
 				ball.set_deferred("freeze", false) 
 		emitter.get_node("AnimationPlayer").play()
-		$ColorRect/Label3/AnimationTree.play("RESET")
-		$ColorRect/NewLabel.hide()
+		press_to_continue_animator.play("RESET")
+		new_label.hide()
 
 func spawn_ball():
-	if can_play:	
+	if can_play:
 		var ball = ball_scene.instantiate()
-		ball.position = emitter.global_position
 		balls_children.add_child(ball)
+		print("emitter position : %s | ball position : %s" % [emitter.position,ball.position])
+		ball.global_position = emitter.global_position
 		balls_remaining -= 1
 		$SoundPlayer/sfx_ball_launched.play()
 		save.balls = balls_remaining
@@ -327,9 +363,9 @@ func save_file():
 	save.shiny_completion = shiny_completion
 	save.pokeball_counter = pokeball_counter
 	var temp_settings = {
-		"master_volume" : $Settings/SettingsWindows/Options/Option2/MasterSlider.value,
-		"sfx_volume" : $Settings/SettingsWindows/Options/Option2/SFXSlider.value,
-		"bgm_volume" : $Settings/SettingsWindows/Options/Option2/BGMSlider.value
+		"master_volume" : master_slider.value,
+		"sfx_volume" : sfx_slider.value,
+		"bgm_volume" : bgm_slider.value
 	}
 	save.settings = temp_settings
 	file.store_var(save)
@@ -368,62 +404,62 @@ func check_for_pokemon():
 			match rarity:
 				"C":
 					pokemon = Common[rng.randi_range(0,Common.size()-1)]
-					$ColorRect/Round.modulate = Color.WHITE
-					$ColorRect/RarityLabel.text = "Common... (40%)"
+					round_sprite.modulate = Color.WHITE
+					rarity_label.text = "Common... (40%)"
 				"UC":
 					pokemon = Uncommon[rng.randi_range(0,Uncommon.size()-1)]
-					$ColorRect/Round.modulate = Color.SEA_GREEN
-					$ColorRect/RarityLabel.text = "Uncommon.. (25%)"
+					round_sprite.modulate = Color.SEA_GREEN
+					rarity_label.text = "Uncommon.. (25%)"
 				"R":
 					pokemon = Rare[rng.randi_range(0,Rare.size()-1)]
-					$ColorRect/Round.modulate = Color.MEDIUM_BLUE
-					$ColorRect/RarityLabel.text = "Rare. (15%)"
+					round_sprite.modulate = Color.MEDIUM_BLUE
+					rarity_label.text = "Rare. (15%)"
 				"SR":
 					pokemon = SuperRare[rng.randi_range(0,SuperRare.size()-1)]
-					$ColorRect/Round.modulate = Color.ORANGE_RED
-					$ColorRect/RarityLabel.text = "SuperRare ! (10%)"
+					round_sprite.modulate = Color.ORANGE_RED
+					rarity_label.text = "SuperRare ! (10%)"
 				"SSR":
 					pokemon = SuperSuperRare[rng.randi_range(0,SuperSuperRare.size()-1)]
-					$ColorRect/Round.modulate = Color.YELLOW
-					$ColorRect/RarityLabel.text = "SuperSuperRare !!! (6%)"
+					round_sprite.modulate = Color.YELLOW
+					rarity_label.text = "SuperSuperRare !!! (6%)"
 				"UR":
 					pokemon = UltraRare[rng.randi_range(0,UltraRare.size()-1)]
-					$ColorRect/Round.modulate = Color.REBECCA_PURPLE
-					$ColorRect/RarityLabel.text = "UltraRare ?!?!? (3%)"
+					round_sprite.modulate = Color.REBECCA_PURPLE
+					rarity_label.text = "UltraRare ?!?!? (3%)"
 				"MR":
 					pokemon = MegaRare[rng.randi_range(0,MegaRare.size()-1)]
-					$ColorRect/Round.modulate = Color.HOT_PINK
-					$ColorRect/RarityLabel.text = "MEGARARE !!!!!!! T_T (1%)"
+					round_sprite.modulate = Color.HOT_PINK
+					rarity_label.text = "MEGARARE !!!!!!! T_T (1%)"
 			
 			#shiny
 			var shiny_check = rng.randi_range (1,512)
 			if shiny_check == 1:
-				$ColorRect/AnimatedSprite2D.play(str(pokemon[1])+"s")
-				$ColorRect/Label2.text = "It's a shiny %s !" % [pokemon[0]]
+				pokemon_sprites.play(str(pokemon[1])+"s")
+				pokemon_name_display.text = "It's a shiny %s !" % [pokemon[0]]
 				#Animation et pokémon
 				emitter.get_node("AnimationPlayer").pause()
 				if save.hills_shinydex[pokemon[0]][2] == false:
-					$ColorRect/NewLabel.show()
+					new_label.show()
 					save.hills_shinydex[pokemon[0]][2] = true
 				else:
-					$ColorRect/NewLabel.hide()
+					new_label.hide()
 			else:
-				$ColorRect/AnimatedSprite2D.play(str(pokemon[1]))
-				$ColorRect/Label2.text = "It's %s !" % [pokemon[0]]
+				pokemon_sprites.play(str(pokemon[1]))
+				pokemon_name_display.text = "It's %s !" % [pokemon[0]]
 				#Animation et pokémon
 				emitter.get_node("AnimationPlayer").pause()
 				if save.hills_pokedex[pokemon[0]][2] == false:
-					$ColorRect/NewLabel.show()
+					new_label.show()
 					save.hills_pokedex[pokemon[0]][2] = true
 				else:
-					$ColorRect/NewLabel.hide()
+					new_label.hide()
 			can_play = false
 			for ball in balls:
 				ball.set_deferred("freeze", true) 
 			catch_animator.play("Pokemon")
 			pokeled_animator.play("Pokemon")
 			await get_tree().create_timer(4.5).timeout
-			$ColorRect/Label3/AnimationTree.play("new_animation")
+			press_to_continue_animator.play("new_animation")
 			can_continue = true
 			pokedex_completion = calculate_pokemon_percentage(save.hills_pokedex, whole_hills_pokedex)
 			shiny_completion = calculate_pokemon_percentage(save.hills_shinydex, whole_hills_pokedex)
@@ -491,72 +527,74 @@ func _on_pokeball_body_entered(body):
 		pass # Replace with function body.
 
 func _process(_delta):
-	$HUD2/Label.text = "Balls : %s" % balls_remaining
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), $Settings/SettingsWindows/Options/Option2/MasterSlider.value)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), $Settings/SettingsWindows/Options/Option2/SFXSlider.value)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), $Settings/SettingsWindows/Options/Option2/BGMSlider.value)
+	balls_remaining_label.text = "Balls : %s" % balls_remaining
+	rarity_label.pivot_offset = rarity_label.size/2
+	catching_labels_container.pivot_offset = catching_labels_container.size/2
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), master_slider.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), sfx_slider.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), bgm_slider.value)
 
 func _on_button_pressed():
-	$Pokedex.hide()
+	pokedex_node.hide()
 	pass # Replace with function body.
 
 
 func _on_texture_rect_pressed():
-	$Pokedex/passhiny.show()
-	$Pokedex/shiny.show()
+	pas_shiny_button.show()
+	shiny_button.show()
 	match board:
 		"hills":
-			$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
-	$Pokedex.show()
+			pokedex_display_node.load_pdx(save.hills_pokedex, false)
+	pokedex_node.show()
 	pass # Replace with function body.
 
 func _on_shiny_enable_pressed():
-	$Pokedex/passhiny.set_disabled(true)
-	$Pokedex/shiny.set_disabled(false)
-	$"Pokedex/Stat button".set_disabled(false)
+	pas_shiny_button.set_disabled(true)
+	shiny_button.set_disabled(false)
+	stats_button.set_disabled(false)
 	display_shiny = false
-	$Pokedex/Stats.hide()
-	$Pokedex/ScrollContainer.show()
+	stats_node.hide()
+	scroll_pokedex_node.show()
 	match board:
 		"hills":
-			$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_pokedex, false)
+			pokedex_display_node.load_pdx(save.hills_pokedex, false)
 	pass # Replace with function body.
 
 
 func _on_close_settings_pressed():
-	$Settings.hide()
+	settings_node.hide()
 	pass # Replace with function body.
 
 
 func _on_settings_button_pressed():
-	$Settings.show()
+	settings_node.show()
 	pass # Replace with function body.
 
 
-func _on_stat_button_pressed():
-	$Pokedex/ScrollContainer.hide()
-	$Pokedex/Stats.show()
-	$"Pokedex/Stat button".set_disabled(true)
-	$Pokedex/passhiny.set_disabled(false)
-	$Pokedex/shiny.set_disabled(false)
+func _on_stats_button_pressed():
+	scroll_pokedex_node.hide()
+	stats_node.show()
+	stats_button.set_disabled(true)
+	pas_shiny_button.set_disabled(false)
+	shiny_button.set_disabled(false)
 	pass # Replace with function body.
 
 
 func _on_shiny_pressed():
 	display_shiny = true
-	$Pokedex/Stats.hide()
-	$Pokedex/ScrollContainer.show()
-	$Pokedex/passhiny.set_disabled(false)
-	$"Pokedex/Stat button".set_disabled(false)
-	$Pokedex/shiny.set_disabled(true)
+	stats_node.hide()
+	scroll_pokedex_node.show()
+	pas_shiny_button.set_disabled(false)
+	stats_button.set_disabled(false)
+	shiny_button.set_disabled(true)
 	match board:
 			"hills":
-				$Pokedex/ScrollContainer/PokedexDisplay.load_pdx(save.hills_shinydex, true)
+				pokedex_display_node.load_pdx(save.hills_shinydex, true)
 	pass # Replace with function body.
 
 func _on_timer_timeout():
 	time_spent += 1
-	$Pokedex/Stats/VBoxContainer/Label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
+	stats_label.text = "Balles lancées: "+str(ball_count)+"\n"+"Temps perdu: "+str(_format_seconds_to_hhmmss(time_spent))+"\n"+"Pokédex complété à "+str(round(pokedex_completion))+"%"+"\n"+"Shinydex complété à "+str(round(shiny_completion))+"%"
 	pass # Replace with function body.
 
 func _notification(what):

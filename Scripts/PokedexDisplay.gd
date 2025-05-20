@@ -15,4 +15,5 @@ func load_pdx(pdx, shiny):
 		add_child(uwu)
 	pass # Replace with function body.
 
-
+func _process(delta):
+	self.columns = floor(get_parent().size.x / 80)
