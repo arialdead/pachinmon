@@ -41,6 +41,9 @@ const current_version = 1.3
 @export_category("Animated Sprite 2D")
 @export var pokemon_sprites : AnimatedSprite2D
 
+@export_category("Particles Generator")
+@export var shiny_particles : CPUParticles2D
+
 #Déclaration des scenes a instancier
 @export_category("Scenes")
 @export var ball_scene: PackedScene
@@ -249,23 +252,20 @@ func _ready():
 		
 		var time = Time.get_datetime_dict_from_system()
 		var old_time = save.last_time_got_ball
-		#calculate time dif	
-		var temp_balls = 0
-		
-		var dif_minutes = time.minute - old_time.minute
-		if dif_minutes >= 1:
-			temp_balls += floor(dif_minutes)
-			
-		var dif_hours = time.hour - old_time.hour
-		if dif_hours >= 1:
-			temp_balls += floor(dif_hours)*60
-		
-		var dif_days = time.day - old_time.day
-		if dif_days >= 1:
-			temp_balls += floor(dif_days)*24*60
-		
+		print("old time : %s | new_time : %s" % [old_time, time])
+		var future_unix := Time.get_unix_time_from_datetime_dict(old_time)
+		var current_unix := Time.get_unix_time_from_datetime_dict(time)
+		var time_elapsed = current_unix - future_unix
+		print(time_elapsed)
+		var temp_balls = floor(time_elapsed/60)
+		var seconde_davance = time_elapsed-floor(temp_balls*60)
+		print(seconde_davance)
 		if temp_balls > 2000:
 			temp_balls = 2000
+		elif seconde_davance != 0:
+			$"OneMinuteTimer".stop()
+			$"OneMinuteTimer".start(60-seconde_davance)
+			
 		
 		#load last stats
 		ball_count = save.ball_count
@@ -320,7 +320,7 @@ func generate_hills_pokedex():
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"):
 		balls_remaining += 1000
-	if Input.is_action_just_pressed ("ui_accept") and pokedex_node.is_visible_in_tree() == false and settings_node.is_visible_in_tree() == false:
+	if Input.is_action_just_pressed ("ui_accept"):
 		action_done()
 	if event.is_action_pressed("ui_page_up"):
 		for x in save.hills_pokedex:
@@ -329,26 +329,26 @@ func _input(event):
 			save.hills_shinydex[x][2] = true
 	
 func action_done():
-	if can_continue and can_play:
-		if balls_remaining > 0:
-			spawn_ball()
+	if pokedex_node.is_visible_in_tree() == false and settings_node.is_visible_in_tree() == false:
+		if can_continue and can_play:
+			if balls_remaining > 0:
+				spawn_ball()
 			
-	elif can_continue and not can_play:
-		catch_animator.play("Closing")
-		press_to_continue_animator.pause()
-		await get_tree().create_timer(1.0).timeout
-		can_play = true
-		for ball in balls:
-				ball.set_deferred("freeze", false) 
-		emitter.get_node("AnimationPlayer").play()
-		press_to_continue_animator.play("RESET")
-		new_label.hide()
+		elif can_continue and not can_play:
+			catch_animator.play("Closing")
+			press_to_continue_animator.pause()
+			await get_tree().create_timer(1.0).timeout
+			can_play = true
+			for ball in balls:
+					ball.set_deferred("freeze", false) 
+			emitter.get_node("AnimationPlayer").play()
+			press_to_continue_animator.play("RESET")
+			new_label.hide()
 
 func spawn_ball():
 	if can_play:
 		var ball = ball_scene.instantiate()
 		balls_children.add_child(ball)
-		print("emitter position : %s | ball position : %s" % [emitter.position,ball.position])
 		ball.global_position = emitter.global_position
 		balls_remaining -= 1
 		$SoundPlayer/sfx_ball_launched.play()
@@ -428,9 +428,11 @@ func check_for_pokemon():
 					rarity_label.text = "MEGA RARE !!!!!!! T_T (1%)"
 			
 			#shiny
-			var shiny_check = rng.randi_range (1,512)
+			var shiny_check = rng.randi_range (1,1)
 			if shiny_check == 1:
 				pokemon_sprites.play(str(pokemon[1])+"s")
+				$SoundPlayer/sfx_shiny.volume_db = 0
+				shiny_particles.modulate.a = 255
 				pokemon_name_display.text = "It's a shiny %s !" % [pokemon[0]]
 				#Animation et pokémon
 				emitter.get_node("AnimationPlayer").pause()
@@ -442,6 +444,8 @@ func check_for_pokemon():
 			else:
 				pokemon_sprites.play(str(pokemon[1]))
 				pokemon_name_display.text = "It's %s !" % [pokemon[0]]
+				$SoundPlayer/sfx_shiny.volume_db = -80
+				shiny_particles.modulate.a = 0
 				#Animation et pokémon
 				emitter.get_node("AnimationPlayer").pause()
 				if save.hills_pokedex[pokemon[0]][2] == false:
@@ -529,12 +533,17 @@ func _process(_delta):
 
 func _on_button_pressed():
 	pokedex_node.hide()
+	pas_shiny_button.set_disabled(false)
+	shiny_button.set_disabled(false)
+	stats_button.set_disabled(false)
+	stats_node.hide()
+	scroll_pokedex_node.hide()
 	pass # Replace with function body.
 
 
 func _on_texture_rect_pressed():
-	pas_shiny_button.show()
-	shiny_button.show()
+	#pas_shiny_button.show()
+	#shiny_button.show()
 	match board:
 		"hills":
 			pokedex_display_node.load_pdx(save.hills_pokedex, false)
@@ -624,6 +633,7 @@ func _on_catch_animator_animation_finished(anim_name):
 
 
 func _on_one_minute_timer_timeout():
+	$OneMinuteTimer.start(60)
 	print("Got new ball !")
 	balls_remaining += 1
 	$SoundPlayer/sfx_new_ball.play()
@@ -634,4 +644,9 @@ func _on_one_minute_timer_timeout():
 
 func _on_balls_nice_pressed():
 	got_x_balls.hide()
+	pass # Replace with function body.
+
+
+func _on_click_pressed():
+	action_done()
 	pass # Replace with function body.

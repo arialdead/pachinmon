@@ -2,6 +2,9 @@ extends GridContainer
 
 @export var res_pokemon_template: PackedScene
 
+func _ready():
+	get_parent().get_v_scroll_bar().modulate.a = 0
+
 # Called when the node enters the scene tree for the first time.
 func load_pdx(pdx, shiny):
 	for x in get_children():

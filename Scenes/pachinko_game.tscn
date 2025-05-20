@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://da6d6unxurmtx"]
+[gd_scene load_steps=75 format=3 uid="uid://da6d6unxurmtx"]
 
 [ext_resource type="Script" path="res://Scripts/PachinkoGame.gd" id="1_hvfcm"]
 [ext_resource type="PackedScene" uid="uid://dxin6pw5sftou" path="res://Scenes/ball.tscn" id="2_aubgf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dtom0f2m5sg2i" path="res://Sprite/HUD/pokedex.png" id="13_xhgqe"]
 [ext_resource type="Texture2D" uid="uid://uk00mvl0mpp1" path="res://Sprite/HUD/pokedex_pressed.png" id="14_52y2f"]
 [ext_resource type="PackedScene" uid="uid://ior8ibenns5y" path="res://Scenes/pokemon_template.tscn" id="15_3fld7"]
+[ext_resource type="Texture2D" uid="uid://bfrj0d6d6qxx1" path="res://Sprite/Game Elements/shiny.png" id="15_kesw1"]
 [ext_resource type="AudioStream" uid="uid://rcuw26ewoav2" path="res://Sounds/showtime_undertale.ogg" id="15_m2yg6"]
 [ext_resource type="Texture2D" uid="uid://cdp7ufw0rcj88" path="res://Sprite/HUD/pokedex_hover.png" id="15_sqsr2"]
 [ext_resource type="FontFile" uid="uid://rw0divhmlh6r" path="res://Fonts/m5x7.ttf" id="16_k1mt0"]
@@ -41,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://oy01cqo1j7fo" path="res://Sounds/ultrarare.ogg" id="39_5my72"]
 [ext_resource type="AudioStream" uid="uid://cqrgxgoauvb4q" path="res://Sounds/secretrare.ogg" id="40_a5lgr"]
 [ext_resource type="AudioStream" uid="uid://d36ekvxwdxvrm" path="res://Sounds/megarare.ogg" id="41_cpgud"]
+[ext_resource type="AudioStream" uid="uid://bxkomrq52j064" path="res://Sounds/shiny.ogg" id="42_ebd4c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64x0t"]
 bg_color = Color(0, 0, 0, 0.141176)
@@ -92,6 +94,10 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="Gradient" id="Gradient_u8cln"]
+offsets = PackedFloat32Array(0.429319, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_uaggq"]
 length = 0.001
@@ -229,6 +235,448 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2.82843, 1),
 "update": 0,
 "values": [0.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1fi03"]
+resource_name = "Common"
+length = 3.64
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.42, 3.64),
+"transitions": PackedFloat32Array(0.5, 2.73208),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.42, 3.64),
+"transitions": PackedFloat32Array(25.1067, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.42, 3.64),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.42),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.42, 3.64),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.42, 3.64),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SoundPlayer/sfx_common:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3, 3.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundPlayer/sfx_catching2:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.64),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(3.64),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 3.64),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 3.6, 3.64),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iswh4"]
+resource_name = "MegaRare"
+length = 8.14
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.42, 8.14),
+"transitions": PackedFloat32Array(0.3, 2.73208),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.42, 8.14),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.42, 8.14),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.07, 5.14, 5.5, 5.57, 5.93, 6, 6.42),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14), Vector2(0, 0), Vector2(16, 16), Vector2(0, 0), Vector2(18, 18), Vector2(0, 0), Vector2(20, 20)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(6.42, 8.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(6.42, 8.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.13, 5.14, 5.56, 5.57, 5.99, 6, 6.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.843137, 0, 1), Color(1, 0.843137, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(8.14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundPlayer/sfx_megarare:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round/RainbowGradient:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(8.14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 8.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 8.13, 8.14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_4uah8"]
@@ -509,351 +957,41 @@ tracks/22/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_1fi03"]
-resource_name = "Common"
-length = 3.64
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
-"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
-"update": 0,
-"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.3),
-"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
-"update": 0,
-"values": [0.0, -0.326377, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3.42, 3.64),
-"transitions": PackedFloat32Array(0.5, 2.73208),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3.42, 3.64),
-"transitions": PackedFloat32Array(25.1067, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3.42, 3.64),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.42),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(3.42, 3.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(3.42, 3.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SoundPlayer/sfx_common:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(3, 3.42),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_catching2:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(3.64),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_t5g54"]
-resource_name = "UnCommon"
-length = 4.28
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
-"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
-"update": 0,
-"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.3),
-"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
-"update": 0,
-"values": [0.0, -0.326377, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3.85, 4.28),
-"transitions": PackedFloat32Array(0.5, 2.73208),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3.85, 4.28),
-"transitions": PackedFloat32Array(25.1067, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3.85, 4.28),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.35, 3.42, 3.85),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(3.85, 4.28),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(3.85, 4.28),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(3, 3.41, 3.42, 3.85),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(4.28),
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_uncommon:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vvonf"]
@@ -1028,524 +1166,41 @@ tracks/13/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_ltlo1"]
-resource_name = "SuperRare"
-length = 5.57
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
-"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
-"update": 0,
-"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.3),
-"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
-"update": 0,
-"values": [0.0, -0.326377, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(4.71, 5.57),
-"transitions": PackedFloat32Array(0.5, 2.73208),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.71, 5.57),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(4.71, 5.57),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.71),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(4.71, 5.57),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.92),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(4.71, 5.57),
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 4.92),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.71),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(5.57),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_superrare:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(3.01),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_hc8g8"]
-resource_name = "SuperSuperRare"
-length = 6.21
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 4.91, 4.92),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
-"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
-"update": 0,
-"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.3),
-"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
-"update": 0,
-"values": [0.0, -0.326377, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(5.14, 6.21),
-"transitions": PackedFloat32Array(0.3, 2.73208),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(5.14, 6.21),
-"transitions": PackedFloat32Array(4, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(5.14, 6.21),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.14),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(5.14, 6.21),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(5.14, 6.21),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.14),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(6.21),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_supersuperrare:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_vkura"]
-resource_name = "UltraRare"
-length = 6.85
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
-"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
-"update": 0,
-"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 1.8, 2.3),
-"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
-"update": 0,
-"values": [0.0, -0.326377, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(5.57, 6.85),
-"transitions": PackedFloat32Array(0.3, 2.73208),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(5.57, 6.85),
-"transitions": PackedFloat32Array(4, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(5.57, 6.85),
-"transitions": PackedFloat32Array(0.366021, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.07, 5.14, 5.57),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 2, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14), Vector2(0, 0), Vector2(16, 16)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(5.57, 6.85),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(5.57, 6.85),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.13, 5.14, 5.57),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.301961, 0.427451, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(6.85),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_ultrare:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_4vfp6"]
@@ -1720,10 +1375,46 @@ tracks/13/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 7.49, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_iswh4"]
-resource_name = "MegaRare"
-length = 8.14
+[sub_resource type="Animation" id="Animation_ltlo1"]
+resource_name = "SuperRare"
+length = 5.57
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1768,8 +1459,8 @@ tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSp
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6.42, 8.14),
-"transitions": PackedFloat32Array(0.3, 2.73208),
+"times": PackedFloat32Array(4.71, 5.57),
+"transitions": PackedFloat32Array(0.5, 2.73208),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
 }
@@ -1780,8 +1471,8 @@ tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSp
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(6.42, 8.14),
-"transitions": PackedFloat32Array(4, 1),
+"times": PackedFloat32Array(4.71, 5.57),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
@@ -1792,7 +1483,7 @@ tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNa
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(6.42, 8.14),
+"times": PackedFloat32Array(4.71, 5.57),
 "transitions": PackedFloat32Array(0.366021, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
@@ -1804,10 +1495,10 @@ tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundCont
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.07, 5.14, 5.5, 5.57, 5.93, 6, 6.42),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 0.5),
+"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.71),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 0.5),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14), Vector2(0, 0), Vector2(16, 16), Vector2(0, 0), Vector2(18, 18), Vector2(0, 0), Vector2(20, 20)]
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1828,7 +1519,7 @@ tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingL
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(6.42, 8.14),
+"times": PackedFloat32Array(4.71, 5.57),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1852,7 +1543,7 @@ tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/Catching
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(6.42, 8.14),
+"times": PackedFloat32Array(4.71, 5.57),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1864,10 +1555,10 @@ tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundCon
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.13, 5.14, 5.56, 5.57, 5.99, 6, 6.42),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.71),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.843137, 0, 1), Color(1, 0.843137, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -1876,7 +1567,7 @@ tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(8.14),
+"times": PackedFloat32Array(5.57),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1884,7 +1575,216 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("SoundPlayer/sfx_megarare:playing")
+tracks/13/path = NodePath("SoundPlayer/sfx_superrare:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(5.57),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 5.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 5.56, 5.57),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hc8g8"]
+resource_name = "SuperSuperRare"
+length = 6.21
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.14, 6.21),
+"transitions": PackedFloat32Array(0.3, 2.73208),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.14, 6.21),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.14, 6.21),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.14),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(5.14, 6.21),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(5.14, 6.21),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(6.21),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundPlayer/sfx_supersuperrare:playing")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1896,14 +1796,456 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round/RainbowGradient:visible")
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(6.21),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 6.21),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 6.2, 6.21),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vkura"]
+resource_name = "UltraRare"
+length = 6.85
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.57, 6.85),
+"transitions": PackedFloat32Array(0.3, 2.73208),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.57, 6.85),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.57, 6.85),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.35, 3.42, 3.78, 3.85, 4.21, 4.28, 4.64, 4.71, 5.07, 5.14, 5.57),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5, 0.5, 0.5, 2, 0.5, 2, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8), Vector2(0, 0), Vector2(10, 10), Vector2(0, 0), Vector2(12, 12), Vector2(0, 0), Vector2(14, 14), Vector2(0, 0), Vector2(16, 16)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(5.57, 6.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(5.57, 6.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 3.41, 3.42, 3.84, 3.85, 4.27, 4.28, 4.7, 4.71, 5.13, 5.14, 5.57),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.235294, 0.490196, 0.85098, 1), Color(0.635294, 0.34902, 1, 1), Color(0.635294, 0.34902, 1, 1), Color(1, 0.647059, 0, 1), Color(1, 0.647059, 0, 1), Color(1, 0.301961, 0.427451, 1), Color(1, 0.301961, 0.427451, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(6.85),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundPlayer/sfx_ultrare:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(6.85),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 6.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 6.84, 6.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t5g54"]
+resource_name = "UnCommon"
+length = 4.28
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.737255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.6, 3.2, 4.5),
+"transitions": PackedFloat32Array(0.189465, 1, 0.170755, 1, 1),
+"update": 0,
+"values": [Vector2(1549, 84.5), Vector2(-56, 80), Vector2(-56, 84.5), Vector2(-56, 194), Vector2(-56, 194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/WildPokemonAppearsLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 1.8, 2.3),
+"transitions": PackedFloat32Array(0.287175, 4.28709, 1),
+"update": 0,
+"values": [0.0, -0.326377, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.85, 4.28),
+"transitions": PackedFloat32Array(0.5, 2.73208),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.85, 4.28),
+"transitions": PackedFloat32Array(25.1067, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonNameDisplay:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.85, 4.28),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 3.35, 3.42, 3.85),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(6, 6), Vector2(0, 0), Vector2(8, 8)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/NewLabel:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.85, 4.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundPlayer/sfx_catching:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.85, 4.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/RoundContainer/Round:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3, 3.41, 3.42, 3.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.690196, 0.690196, 0.690196, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.235294, 0.690196, 0.262745, 1), Color(0.235294, 0.690196, 0.262745, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SoundPlayer/sfx_catching2:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(4.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundPlayer/sfx_uncommon:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundPlayer/sfx_shiny:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 4.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 4.27, 4.28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwtlu"]
@@ -1959,7 +2301,7 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_wak41")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_8br75")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_4javf")
 
-[node name="PachinkoGame" type="Node2D" node_paths=PackedStringArray("rarity_label_animator", "new_label_animator", "catch_animator", "press_to_continue_animator", "master_slider", "sfx_slider", "bgm_slider", "stats_label", "balls_remaining_label", "rarity_label", "new_label", "pokemon_name_display", "balls_text", "catching_labels_container", "pokedex_node", "settings_node", "pokedex_display_node", "scroll_pokedex_node", "stats_node", "board_container", "got_x_balls", "pas_shiny_button", "shiny_button", "stats_button", "balls_nice", "pokemon_sprites")]
+[node name="PachinkoGame" type="Node2D" node_paths=PackedStringArray("rarity_label_animator", "new_label_animator", "catch_animator", "press_to_continue_animator", "master_slider", "sfx_slider", "bgm_slider", "stats_label", "balls_remaining_label", "rarity_label", "new_label", "pokemon_name_display", "balls_text", "catching_labels_container", "pokedex_node", "settings_node", "pokedex_display_node", "scroll_pokedex_node", "stats_node", "board_container", "got_x_balls", "pas_shiny_button", "shiny_button", "stats_button", "balls_nice", "pokemon_sprites", "shiny_particles")]
 texture_filter = 1
 script = ExtResource("1_hvfcm")
 rarity_label_animator = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/CatchingLabelsContainer/RarityLabel/RarityLabelAnimator")
@@ -1988,6 +2330,7 @@ shiny_button = NodePath("CanvasLayer/Pokedex/PokedexButtons/Shiny")
 stats_button = NodePath("CanvasLayer/Pokedex/PokedexButtons/StatsButton")
 balls_nice = NodePath("CanvasLayer/HUD2/GotXBalls/BallsNice")
 pokemon_sprites = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites")
+shiny_particles = NodePath("CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites/ShinyParticles")
 ball_scene = ExtResource("2_aubgf")
 hills = ExtResource("3_k06rk")
 
@@ -2019,7 +2362,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
+focus_mode = 0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/HUD2"]
 custom_minimum_size = Vector2(0, 38)
@@ -2059,6 +2402,7 @@ custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("10_onton")
 texture_pressed = ExtResource("11_g2di1")
 texture_hover = ExtResource("11_q6xbs")
@@ -2069,6 +2413,7 @@ custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("13_xhgqe")
 texture_pressed = ExtResource("14_52y2f")
 texture_hover = ExtResource("15_sqsr2")
@@ -2221,6 +2566,30 @@ scale = Vector2(1e-05, 1e-05)
 sprite_frames = ExtResource("12_rw5n3")
 animation = &"784"
 metadata/_edit_lock_ = true
+
+[node name="ShinyParticles" type="CPUParticles2D" parent="CanvasLayer/ColorRect/CatchingPokemonDisplay/PokemonSpritesContainer/PokemonSprites"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 3.75)
+scale = Vector2(0.25, 0.25)
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.34
+texture = ExtResource("15_kesw1")
+emission_shape = 3
+emission_rect_extents = Vector2(64, 64)
+direction = Vector2(0, -263)
+gravity = Vector2(0, 100)
+initial_velocity_min = 67.23
+initial_velocity_max = 67.23
+radial_accel_min = 15.12
+radial_accel_max = 15.12
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_u8cln")
 
 [node name="WildPokemonAppearsLabel" type="Label" parent="CanvasLayer/ColorRect/CatchingPokemonDisplay"]
 texture_filter = 1
@@ -2395,7 +2764,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -45.0
+offset_right = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_to0a8")
@@ -2423,30 +2792,38 @@ offset_bottom = 79.0
 grow_horizontal = 0
 
 [node name="Close button" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("18_akpa7")
 texture_pressed = ExtResource("19_u00ih")
 texture_hover = ExtResource("20_doqxe")
+stretch_mode = 0
 
 [node name="PasShiny" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("26_jhsbo")
 texture_pressed = ExtResource("26_jhsbo")
 texture_hover = ExtResource("26_jhsbo")
 texture_disabled = ExtResource("17_iku5n")
+stretch_mode = 0
 
 [node name="Shiny" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("29_x2ici")
 texture_pressed = ExtResource("29_x2ici")
 texture_hover = ExtResource("31_2wf0t")
 texture_disabled = ExtResource("20_v4aqd")
+stretch_mode = 0
 
 [node name="StatsButton" type="TextureButton" parent="CanvasLayer/Pokedex/PokedexButtons"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("20_4u7n8")
 texture_pressed = ExtResource("21_2qnb5")
 texture_disabled = ExtResource("21_2qnb5")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
@@ -2622,6 +2999,11 @@ bus = &"SFX"
 
 [node name="sfx_megarare" type="AudioStreamPlayer" parent="SoundPlayer"]
 stream = ExtResource("41_cpgud")
+volume_db = -17.802
+bus = &"SFX"
+
+[node name="sfx_shiny" type="AudioStreamPlayer" parent="SoundPlayer"]
+stream = ExtResource("42_ebd4c")
 volume_db = -17.802
 bus = &"SFX"
 
