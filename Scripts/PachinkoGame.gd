@@ -20,6 +20,7 @@ const current_version = 1.3
 @export var rarity_label : Label
 @export var new_label : Label
 @export var pokemon_name_display : Label
+@export var balls_text : Label
 @export var catching_labels_container : VBoxContainer
 
 @export_category("Nodes")
@@ -29,15 +30,14 @@ const current_version = 1.3
 @export var scroll_pokedex_node : Node
 @export var stats_node : Node
 @export var board_container : Node
+@export var got_x_balls : Node
 
-@export_category("Texture Buttons")
+@export_category("Buttons")
 @export var pas_shiny_button : TextureButton
 @export var shiny_button : TextureButton
 @export var stats_button : TextureButton
-
-@export_category("Sprite 2D")
-@export var round_sprite : Sprite2D
-
+@export var balls_nice : Button
+ 
 @export_category("Animated Sprite 2D")
 @export var pokemon_sprites : AnimatedSprite2D
 
@@ -253,19 +253,19 @@ func _ready():
 		var temp_balls = 0
 		
 		var dif_minutes = time.minute - old_time.minute
-		if dif_minutes/15 > 1:
-			temp_balls += floor(dif_minutes/15)*2
+		if dif_minutes >= 1:
+			temp_balls += floor(dif_minutes)
 			
 		var dif_hours = time.hour - old_time.hour
-		if dif_hours > 0:
-			temp_balls += dif_hours*8
+		if dif_hours >= 1:
+			temp_balls += floor(dif_hours)*60
 		
 		var dif_days = time.day - old_time.day
-		if dif_days > 0:
-			temp_balls += dif_days*96*2
+		if dif_days >= 1:
+			temp_balls += floor(dif_days)*24*60
 		
-		if temp_balls > 500:
-			temp_balls = 500
+		if temp_balls > 2000:
+			temp_balls = 2000
 		
 		#load last stats
 		ball_count = save.ball_count
@@ -278,6 +278,9 @@ func _ready():
 		if temp_balls > 0:
 			save.balls = balls_remaining
 			save.last_time_got_ball = time
+			balls_text.text = "You got %s balls while you were away !" % temp_balls
+		else:
+			got_x_balls.hide()
 		file.close()
 		save_file()
 	
@@ -402,34 +405,27 @@ func check_for_pokemon():
 			rng.randomize()
 			var pokemon
 			match rarity:
-				"C":
+				"Common":
 					pokemon = Common[rng.randi_range(0,Common.size()-1)]
-					round_sprite.modulate = Color.WHITE
 					rarity_label.text = "Common... (40%)"
-				"UC":
+				"UnCommon":
 					pokemon = Uncommon[rng.randi_range(0,Uncommon.size()-1)]
-					round_sprite.modulate = Color.SEA_GREEN
 					rarity_label.text = "Uncommon.. (25%)"
-				"R":
+				"Rare":
 					pokemon = Rare[rng.randi_range(0,Rare.size()-1)]
-					round_sprite.modulate = Color.MEDIUM_BLUE
 					rarity_label.text = "Rare. (15%)"
-				"SR":
+				"SuperRare":
 					pokemon = SuperRare[rng.randi_range(0,SuperRare.size()-1)]
-					round_sprite.modulate = Color.ORANGE_RED
-					rarity_label.text = "SuperRare ! (10%)"
-				"SSR":
+					rarity_label.text = "Super Rare ! (10%)"
+				"SuperSuperRare":
 					pokemon = SuperSuperRare[rng.randi_range(0,SuperSuperRare.size()-1)]
-					round_sprite.modulate = Color.YELLOW
-					rarity_label.text = "SuperSuperRare !!! (6%)"
-				"UR":
+					rarity_label.text = "Super Super Rare !!! (6%)"
+				"UltraRare":
 					pokemon = UltraRare[rng.randi_range(0,UltraRare.size()-1)]
-					round_sprite.modulate = Color.REBECCA_PURPLE
-					rarity_label.text = "UltraRare ?!?!? (3%)"
-				"MR":
+					rarity_label.text = "Ultra Rare ?!?!? (3%)"
+				"MegaRare":
 					pokemon = MegaRare[rng.randi_range(0,MegaRare.size()-1)]
-					round_sprite.modulate = Color.HOT_PINK
-					rarity_label.text = "MEGARARE !!!!!!! T_T (1%)"
+					rarity_label.text = "MEGA RARE !!!!!!! T_T (1%)"
 			
 			#shiny
 			var shiny_check = rng.randi_range (1,512)
@@ -456,11 +452,8 @@ func check_for_pokemon():
 			can_play = false
 			for ball in balls:
 				ball.set_deferred("freeze", true) 
-			catch_animator.play("Pokemon")
+			catch_animator.play(rarity)
 			pokeled_animator.play("Pokemon")
-			await get_tree().create_timer(4.5).timeout
-			press_to_continue_animator.play("new_animation")
-			can_continue = true
 			pokedex_completion = calculate_pokemon_percentage(save.hills_pokedex, whole_hills_pokedex)
 			shiny_completion = calculate_pokemon_percentage(save.hills_shinydex, whole_hills_pokedex)
 			save_file()
@@ -471,19 +464,19 @@ func get_rarity():
 	
 	var roll = rng.randi() % 100
 	if roll < 40:
-		return "C"
+		return "Common"
 	elif roll < 65:
-		return "UC"
+		return "UnCommon"
 	elif roll < 80:
-		return "R"
+		return "Rare"
 	elif roll < 90:
-		return "SR"
+		return "SuperRare"
 	elif roll < 96:
-		return "SSR"
+		return "SuperSuperRare"
 	elif roll < 99:
-		return "UR"
+		return "UltraRare"
 	else:
-		return "MR"
+		return "MegaRare"
 		
 
 func _format_seconds_to_hhmmss(seconds):
@@ -525,7 +518,7 @@ func _on_pokeball_body_entered(body):
 			check_for_pokemon()
 			save_file()
 		pass # Replace with function body.
-
+ 
 func _process(_delta):
 	balls_remaining_label.text = "Balls : %s" % balls_remaining
 	rarity_label.pivot_offset = rarity_label.size/2
@@ -621,3 +614,24 @@ func calculate_pokemon_percentage(dict1, dict2):
 
 	var percentage := float(count1) / float(count2) * 100.0
 	return percentage
+
+
+func _on_catch_animator_animation_finished(anim_name):
+	if anim_name != "Closing":
+		press_to_continue_animator.play("new_animation")
+		can_continue = true
+	pass # Replace with function body.
+
+
+func _on_one_minute_timer_timeout():
+	print("Got new ball !")
+	balls_remaining += 1
+	$SoundPlayer/sfx_new_ball.play()
+	save.last_time_got_ball = Time.get_datetime_dict_from_system()
+	save_file()
+	pass # Replace with function body.
+
+
+func _on_balls_nice_pressed():
+	got_x_balls.hide()
+	pass # Replace with function body.
