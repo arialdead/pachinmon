@@ -8,9 +8,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-	#$ParallaxLayer.motion_offset.x += 0.3
-	#$ParallaxLayer2.motion_offset.x += 0.6
-	#$ParallaxLayer3.motion_offset.x += 0.9
-	#$ParallaxLayer4.motion_offset.x += 0.05
+	$Grass.position.x += 0.03
+	if $Grass.position.x > -320 + 512:
+		$Grass.position.x -= 512
+	
+	$GrassDark.position.x += 0.06
+	if $GrassDark.position.x > -320 + 512:
+		$GrassDark.position.x -= 512
+	
+	$GrassDarker.position.x += 0.1
+	if $GrassDarker.position.x > -320 + 512:
+		$GrassDarker.position.x -= 512
 	pass
